@@ -30,6 +30,7 @@ public class BlogController {
 
 
 
+
     @GetMapping("/list")
     public String goPage(Model model, @PageableDefault(6) Pageable pageable,
                          @RequestParam Optional<String> name,
