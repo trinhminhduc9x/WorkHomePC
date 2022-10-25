@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>List Book</title>
+    <link rel="stylesheet" href="/style/bootstrap/bootstrap.min.css">
+</head>
+<body>
+<h1 class="text-danger text-center">Book List</h1>
+<form action="/pay"  method="post">
+    <div >
+      <input class="form-control"  placeholder="Enter ID" type="text" name = "id" />
+          <input class="m-3 btn btn-danger" type="submit" value="Pay">
+    </div>
+    <h3 th:text="${msg1}" class="text-primary"></h3>
+</form>
+<h3 th:text="${msg2}" class="text-danger"></h3>
+<table class="table table-hover">
+<tr>
+    <th>No.</th>
+    <th>Id</th>
+    <th>Name</th>
+    <th>Count</th>
+    <th>Detail</th>
+</tr>
+    <tr th:each="book,loop :${bookList}">
+       <td th:text="${loop.count}"></td>
+       <td th:text="${book.id}"></td>
+       <td th:text="${book.name}"></td>
+       <td th:text="${book.count}"></td>
+        <td><a th:href="@{/detail/{id}(id=${book.id})}">
+            <buton class="btn btn-success">Detail</buton>
+        </a></td>
+    </tr>
+</table>
+<script src="/style/bootstrap/bootstrap.min.js"></script>
+</body>
+</html>

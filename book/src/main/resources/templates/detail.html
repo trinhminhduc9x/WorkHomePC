@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Detail</title>
+    <link rel="stylesheet" href="/style/bootstrap/bootstrap.min.css">
+</head>
+<body>
+<h1 class="text-center text-danger"> Detail Book</h1>
+<div class="container">
+    <form action="/detail" th:object="${book}" method="post">
+        <div>
+            <label class="form-label">ID :</label>
+            <input class="form-control" readonly type="text" th:field="*{id}"/>
+
+        </div>
+        <div>
+            <label class="form-label">Name Of Book:</label>
+            <input class="form-control" type="text" th:field="*{name}"/>
+        </div>
+        <div>
+            <label class="form-label">Content :</label>
+            <input class="form-control" type="text" th:field="*{content}"/>
+        </div>
+        <div>
+            <label class="form-label">Author :</label>
+            <input class="form-control" type="text" th:field="*{author}"/>
+        </div>
+        <div>
+            <label class="form-label">Count :</label>
+            <input class="form-control" type="text" th:field="*{count}"/>
+        </div>
+        <div>
+            <label class="form-label">Total:</label>
+            <input class="form-control" type="text" th:field="*{total}"/>
+        </div>
+        <h3 th:text="${msg}" class="text-success"></h3>
+
+        <div><input class="m-3 btn btn-danger" type="submit" value="Borrow">
+            <button class="m-3 btn btn-secondary" >Back</button></div>
+    </form>
+</div>
+<script src="/style/bootstrap/bootstrap.min.js"></script>
+</body>
+</html>
