@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout :: head">
+</head>
+<body>
+
+
+<div th:replace="~{/layout::navbar}"></div>
+<h3 style="text-align: center">customer</h3>
+
+
+<p>
+    <a th:href="@{/customer/create}">
+        <input class="m-3 btn btn-danger" type="submit" value=" Add new Customer">
+    </a>
+</p>
+
+
+<form action="/customer/list" method="get">
+    <tr>
+        <input class="form-control me-2 w-25 " type="text" placeholder="Name"
+               name="name" aria-label="Search" th:value="${name}">
+        <button class="btn btn-success" type="submit">Search</button>
+    </tr>
+    <tr>
+        <input class="form-control me-2 w-25 " type="text" placeholder="email"
+               name="email" aria-label="Search" th:value="${email}">
+        <button class="btn btn-success" type="submit">Search</button>
+    </tr>
+
+    <tr>
+        <form>
+                <label>CustomerType:</label>
+                <select name="CustomerTypeID">
+                    <option th:each="p : ${customerTypeList}"
+                            th:value="${p.id}"
+                            th:text="${p.name}"></option>
+                </select>
+                <button class="btn btn-success" type="submit">Search</button>
+        </form>
+    </tr>
+
+</form>
+<a th:href="@{/customer/list(sort='name', name=${name})}" class="btn btn-success" type="submit">Sort By
+    Name</a>
+<table id="customers">
+    <thead>
+    <tr>
+        <!--        <th>No.</th>-->
+        <th>ID</th>
+        <th>Name</th>
+        <th>dateOfBirth</th>
+        <th>gender</th>
+        <th>idCard</th>
+        <th>phoneNumber</th>
+        <th>email</th>
+        <th>address</th>
+        <th>customerType</th>
+        <th>Edit</th>
+        <th>Delete</th>
+        <th>View</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="customer,loop : ${customerPage}">
+        <!--        <td th:text="${loop.count + blogPage.size * blogPage.number}"></td>-->
+        <td th:text="${customer.id}"></td>
+        <td th:text="${customer.name}"></td>
+        <td th:text="${customer.dateOfBirth}"></td>
+        <td>
+            <span th:if="${customer.gender == '1'}">🙎🏻‍♂️</span>
+
+            <span th:if="${customer.gender == '0'}">🙎🏻‍♀️</span>
+        </td>
+        <td th:text="${customer.idCard}"></td>
+        <td th:text="${customer.phoneNumber}"></td>
+        <td th:text="${customer.email}"></td>
+        <td th:text="${customer.address}"></td>
+        <td th:text="${customer.customerType.name}"></td>
+
+
+                <!-- EDIT -->
+                <td><a th:href="@{/customer/{id}/edit(id=${customer.id})}">
+                    <buton class="btn btn-success">+</buton>
+                </a></td>
+
+                <td>
+                    <!-- DELETE -->
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#deleteModal"
+                            th:attr="onclick=|getIdToDelete('${customer.id}','${customer.name}')|">
+                        DELETE
+                    </button>
+                </td>
+
+
+                <td>
+                    <!-- VIEW -->
+                    <button th:attr="onclick=|infoToDetail('${customer.id}','${customer.name}','${customer.idCard}','${customer.phoneNumber}')|"
+                            class="btn btn-warning"
+                            type="button" data-bs-toggle="modal" data-bs-target="#detailModal">
+                        VIEW
+                    </button>
+                </td>
+            </tr>
+
+
+    </tr>
+
+    <!-- Modal Delete-->
+    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog">
+            <form action="/customer/delete" method="get">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 class="modal-title text-danger" id="exampleModalLabel">customer</h2>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body ">
+                        <b>ID  :</b>
+                        <input type="text" readonly name="id" id="idDelete" class="form-control"><br>
+                        <b>Name  :</b>
+                        <input type="text" readonly name="name" id="nameDelete" class="form-control"><br>
+                        <h3 class="text-danger">Are you sure want delete </h3>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary" value="delete">Yes</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <!-- Modal view-->
+    <div class="modal fade" id="detailModal" tabindex="-1" aria-labelledby="exampleModalLabel1"
+         aria-hidden="true">
+        <div class="modal-dialog">
+            <form>
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 class="modal-title text-danger" id="exampleModalLabel1">Blog</h2>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body ">
+                        <b>ID  :</b>
+                        <input type="text" readonly name="id" id="detailId" class="form-control"><br>
+                        <b>Name  :</b>
+                        <input type="text" readonly name="name" id="detailName" class="form-control"><br>
+                        <b>idCard :</b>
+                        <input type="text" readonly name="idCard" id="detailidCard" class="form-control"><br>
+                        <b>phoneNumber  :</b>
+                        <input type="text" readonly name="note" id="detailphoneNumber" class="form-control"><br>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    </div>
+
+    </tbody>
+</table>
+
+<!-- Phan Trang -->
+<div class="d-flex justify-content-end ">
+    <ul class="pagination">
+        <li class="page-item disabled" th:if="${customerPage.number == 0}">
+            <a class="page-link" href="">Previous</a>
+        </li>
+        <li class="page-item" th:if="${customerPage.number > 0}">
+            <a class="page-link"
+               th:href="@{/customer/list(page=${customerPage.number - 1}, sort=${sortValue}, name=${name})}">Previous</a>
+        </li>
+        <li class="page-item disabled">
+            <a class="page-link" href=""><span th:text="${customerPage.number + 1}"></span> / <span
+                    th:text="${customerPage.totalPages}"></span></a>
+        </li>
+        <li class="page-item disabled" th:if="${customerPage.number >= customerPage.totalPages - 1}">
+            <a class="page-link" href="">Next</a>
+        </li>
+        <li class="page-item" th:if="${customerPage.number < customerPage.totalPages - 1}">
+            <a class="page-link"
+               th:href="@{/customer/list(page=${customerPage.number + 1}, sort=${sortValue}, name=${name})}">Next</a>
+        </li>
+    </ul>
+</div>
+<script>
+    // <%--    thêm value cho thẻ delete--%>
+    function getIdToDelete(id, name) {
+
+        document.getElementById("idDelete").value = id;
+        document.getElementById("nameDelete").value = name;
+    }
+
+    // <%--    thêm value cho thẻ view--%>
+    function infoToDetail(id, name, idCard, phoneNumber) {
+        document.getElementById("detailId").value = id;
+        document.getElementById("detailName").value = name;
+        document.getElementById("detailidCard").value = idCard;
+        document.getElementById("detailphoneNumber").value = phoneNumber;
+    }
+</script>
+<footer th:replace="/layout :: footer"></footer>
+</body>
+</html>
