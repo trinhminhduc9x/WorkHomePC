@@ -26,11 +26,14 @@ public class Employee {
     private EducationDegree educationDegree;
 
 
+    @ManyToOne
+    @JoinColumn(name = "user_name",referencedColumnName = "user_name")
+    private User user;
+
     public Employee() {
     }
 
-    public Employee(Integer id, String name, String dateOfBirth, String idCard,
-                    String salary, String phoneNumber, String email, String address) {
+    public Employee(Integer id, String name, String dateOfBirth, String idCard, String salary, String phoneNumber, String email, String address, Position position, Division division, EducationDegree educationDegree, User user) {
         this.id = id;
         this.name = name;
         this.dateOfBirth = dateOfBirth;
@@ -39,31 +42,12 @@ public class Employee {
         this.phoneNumber = phoneNumber;
         this.email = email;
         this.address = address;
-    }
-
-    public Position getPosition() {
-        return position;
-    }
-
-    public void setPosition(Position position) {
         this.position = position;
-    }
-
-    public Division getDivision() {
-        return division;
-    }
-
-    public void setDivision(Division division) {
         this.division = division;
-    }
-
-    public EducationDegree getEducationDegree() {
-        return educationDegree;
-    }
-
-    public void setEducationDegree(EducationDegree educationDegree) {
         this.educationDegree = educationDegree;
+        this.user = user;
     }
+
 
     public Integer getId() {
         return id;
@@ -129,6 +113,38 @@ public class Employee {
         this.address = address;
     }
 
+    public Position getPosition() {
+        return position;
+    }
+
+    public void setPosition(Position position) {
+        this.position = position;
+    }
+
+    public Division getDivision() {
+        return division;
+    }
+
+    public void setDivision(Division division) {
+        this.division = division;
+    }
+
+    public EducationDegree getEducationDegree() {
+        return educationDegree;
+    }
+
+    public void setEducationDegree(EducationDegree educationDegree) {
+        this.educationDegree = educationDegree;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
     @Override
     public String toString() {
         return "Employee{" +
@@ -143,6 +159,7 @@ public class Employee {
                 ", position=" + position +
                 ", division=" + division +
                 ", educationDegree=" + educationDegree +
+                ", user=" + user +
                 '}';
     }
 }

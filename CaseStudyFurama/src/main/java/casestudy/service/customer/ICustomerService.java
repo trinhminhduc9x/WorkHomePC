@@ -1,6 +1,7 @@
-package casestudy.service;
+package casestudy.service.customer;
 
 import casestudy.model.customer.Customer;
+import casestudy.service.IGeneralService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 

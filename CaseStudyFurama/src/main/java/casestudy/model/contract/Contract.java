@@ -95,4 +95,5 @@ public class Contract {
     public void setFacility(Facility facility) {
         this.facility = facility;
     }
+
 }

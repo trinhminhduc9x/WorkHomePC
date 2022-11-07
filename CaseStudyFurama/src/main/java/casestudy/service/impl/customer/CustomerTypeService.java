@@ -1,8 +1,8 @@
-package casestudy.service.impl;
+package casestudy.service.impl.customer;
 
 import casestudy.model.customer.CustomerType;
-import casestudy.repository.IcustomerTypeRepository;
-import casestudy.service.ICustomerTypeService;
+import casestudy.repository.customer.IcustomerTypeRepository;
+import casestudy.service.customer.ICustomerTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

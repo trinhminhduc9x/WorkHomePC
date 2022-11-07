@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout :: head">
+</head>
+<body>
+<div th:replace="~{/layout::navbar}"></div>
+<h3 style="text-align: center">employee</h3>
+
+<p>
+    <a th:href="@{/employee/create}">
+        <input class="m-3 btn btn-danger" type="submit" value=" Add ">
+    </a>
+</p>
+
+<form action="/employee/list" method="get">
+    <tr>
+        <input class="form-control me-2 w-25 " type="text" placeholder="Name"
+               name="name" aria-label="Search" th:value="${name}">
+        <button class="btn btn-success" type="submit">Search</button>
+    </tr>
+</form>
+
+<a th:href="@{/employee/list(sort='name', name=${name})}" class="btn btn-success" type="submit">
+    Sort By Name</a>
+
+
+<table id="tableMinhDuc">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>dateOfBirth</th>
+        <th>idCard</th>
+        <th>salary</th>
+        <th>phoneNumber</th>
+        <th>email</th>
+        <th>address</th>
+        <th>position</th>
+        <th>division</th>
+        <th>educationDegree</th>
+        <th>user</th>
+<!--        <th>Edit</th>-->
+<!--        <th>Delete</th>-->
+<!--        <th>View</th>-->
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="employee,loop : ${employeePage}">
+        <td th:text="${employee.id}"></td>
+        <td th:text="${employee.name}"></td>
+        <td th:text="${employee.dateOfBirth}"></td>
+        <td th:text="${employee.idCard}"></td>
+        <td th:text="${employee.salary}"></td>
+        <td th:text="${employee.phoneNumber}"></td>
+        <td th:text="${employee.email}"></td>
+        <td th:text="${employee.address}"></td>
+        <td th:text="${employee.position.name}"></td>
+        <td th:text="${employee.division.name}"></td>
+        <td th:text="${employee.educationDegree.name}"></td>
+        <td th:text="${employee.user.user_name}"></td>
+
+<!--                &lt;!&ndash; EDIT &ndash;&gt;-->
+<!--                <td><a th:href="@{/facility/{id}/edit(id=${facility.id})}">-->
+<!--                    <buton class="btn btn-success">+</buton>-->
+<!--                </a></td>-->
+
+<!--                <td>-->
+<!--                    &lt;!&ndash; DELETE &ndash;&gt;-->
+<!--                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#deleteModal"-->
+<!--                            th:attr="onclick=|getIdToDelete('${facility.id}','${facility.name}')|">-->
+<!--                        DELETE-->
+<!--                    </button>-->
+<!--                </td>-->
+
+
+<!--                <td>-->
+<!--                    &lt;!&ndash; VIEW &ndash;&gt;-->
+<!--                    <button th:attr="onclick=|infoToDetail('${facility.id}','${facility.name}','${facility.descriptionOtherConvenience}','${facility.facilityType.name}')|"-->
+<!--                            class="btn btn-warning"-->
+<!--                            type="button" data-bs-toggle="modal" data-bs-target="#detailModal">-->
+<!--                        VIEW-->
+<!--                    </button>-->
+<!--                </td>-->
+<!--            </tr>-->
+
+
+<!--    </tr>-->
+
+<!--    &lt;!&ndash; Modal Delete&ndash;&gt;-->
+<!--    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel"-->
+<!--         aria-hidden="true">-->
+<!--        <div class="modal-dialog">-->
+<!--            <form action="/facility/delete" method="get">-->
+<!--                <div class="modal-content">-->
+<!--                    <div class="modal-header">-->
+<!--                        <h2 class="modal-title text-danger" id="exampleModalLabel">customer</h2>-->
+<!--                        <button type="button" class="btn-close" data-bs-dismiss="modal"-->
+<!--                                aria-label="Close"></button>-->
+<!--                    </div>-->
+<!--                    <div class="modal-body ">-->
+<!--                        <b>ID  :</b>-->
+<!--                        <input type="text" readonly name="id" id="idDelete" class="form-control"><br>-->
+<!--                        <b>Name  :</b>-->
+<!--                        <input type="text" readonly name="name" id="nameDelete" class="form-control"><br>-->
+<!--                        <h3 class="text-danger">Are you sure want delete </h3>-->
+<!--                    </div>-->
+<!--                    <div class="modal-footer">-->
+<!--                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>-->
+<!--                        <button type="submit" class="btn btn-primary" value="delete">Yes</button>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </form>-->
+<!--        </div>-->
+<!--    </div>-->
+
+
+<!--    &lt;!&ndash; Modal view&ndash;&gt;-->
+<!--    <div class="modal fade" id="detailModal" tabindex="-1" aria-labelledby="exampleModalLabel1"-->
+<!--         aria-hidden="true">-->
+<!--        <div class="modal-dialog">-->
+<!--            <form>-->
+<!--                <div class="modal-content">-->
+<!--                    <div class="modal-header">-->
+<!--                        <h2 class="modal-title text-danger" id="exampleModalLabel1">Blog</h2>-->
+<!--                        <button type="button" class="btn-close" data-bs-dismiss="modal"-->
+<!--                                aria-label="Close"></button>-->
+<!--                    </div>-->
+<!--                    <div class="modal-body ">-->
+<!--                        <b>ID  :</b>-->
+<!--                        <input type="text" readonly name="id" id="detailId" class="form-control"><br>-->
+<!--                        <b>Name  :</b>-->
+<!--                        <input type="text" readonly name="name" id="detailName" class="form-control"><br>-->
+<!--                        <b>DescriptionOtherConvenience  :</b>-->
+<!--                        <input type="text" readonly name="name" id="detailDescriptionOtherConvenience" class="form-control"><br>-->
+<!--                        <b>FacilityType  :</b>-->
+<!--                        <input type="text" readonly name="name" id="detailFacilityType" class="form-control"><br>-->
+<!--                    </div>-->
+<!--                    <div class="modal-footer">-->
+<!--                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </form>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    </div>-->
+
+    </tbody>
+</table>
+
+<!-- Phan Trang -->
+<div class="d-flex justify-content-end ">
+    <ul class="pagination">
+        <li class="page-item disabled" th:if="${employeePage.number == 0}">
+            <a class="page-link" href="">Previous</a>
+        </li>
+        <li class="page-item" th:if="${employeePage.number > 0}">
+            <a class="page-link"
+               th:href="@{/employee/list(page=${employeePage.number - 1}, sort=${sortValue}, name=${name})}">Previous</a>
+        </li>
+        <li class="page-item disabled">
+            <a class="page-link" href=""><span th:text="${employeePage.number + 1}"></span> / <span
+                    th:text="${employeePage.totalPages}"></span></a>
+        </li>
+        <li class="page-item disabled" th:if="${employeePage.number >= employeePage.totalPages - 1}">
+            <a class="page-link" href="">Next</a>
+        </li>
+        <li class="page-item" th:if="${employeePage.number < employeePage.totalPages - 1}">
+            <a class="page-link"
+               th:href="@{/employee/list(page=${employeePage.number + 1}, sort=${sortValue}, name=${name})}">Next</a>
+        </li>
+    </ul>
+</div>
+
+<script>
+    // <%--    thêm value cho thẻ delete--%>
+    function getIdToDelete(id, name) {
+        document.getElementById("idDelete").value = id;
+        document.getElementById("nameDelete").value = name;
+    }
+
+    // <%--    thêm value cho thẻ view--%>
+    function infoToDetail(id, name,DescriptionOtherConvenience,FacilityType) {
+        document.getElementById("detailId").value = id;
+        document.getElementById("detailName").value = name;
+        document.getElementById("detailDescriptionOtherConvenience").value = DescriptionOtherConvenience;
+        document.getElementById("detailFacilityType").value = FacilityType;
+    }
+</script>
+
+
+<footer th:replace="/layout :: footer"></footer>
+</body>
+</html>
