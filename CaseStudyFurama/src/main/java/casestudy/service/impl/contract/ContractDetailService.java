@@ -52,4 +52,14 @@ public class ContractDetailService implements IContracDetailService {
     public Page<ContractDetail> findPageNameAll(Pageable pageable, String name) {
         return null;
     }
+
+    @Override
+    public List<ContractDetail> findListcontractId(Integer contractId) {
+        return repository.findListById(contractId);
+    }
+
+    @Override
+    public List<Object> findAllcontractId(Integer contractId) {
+        return repository.findListByIdAll(contractId);
+    }
 }

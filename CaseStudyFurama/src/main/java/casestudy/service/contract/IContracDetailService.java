@@ -28,4 +28,8 @@ public interface IContracDetailService extends IGeneralService<ContractDetail> {
 
     @Override
     Page<ContractDetail> findPageNameAll(Pageable pageable, String name);
+
+    List<ContractDetail> findListcontractId( Integer contractId);
+
+    List<Object> findAllcontractId( Integer contractId);
 }

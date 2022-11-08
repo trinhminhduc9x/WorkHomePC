@@ -37,7 +37,7 @@ public class FacilityController {
     public String goPage(Model model,
                          @PageableDefault(6) Pageable pageable,
                          @RequestParam Optional<String> name,
-                         @RequestParam(required = false, defaultValue = "") String FacilityTypeID)throws Exception {
+                         @RequestParam(required = false, defaultValue = "") String FacilityTypeID )throws Exception {
         for (Sort.Order order : pageable.getSort()) {
             model.addAttribute("sortValue", order.getProperty());
         }
@@ -52,7 +52,7 @@ public class FacilityController {
         model.addAttribute("rentTypeList", rentTypeList);
         model.addAttribute("facilityPage", facilityPage);
         model.addAttribute("name", keyName);
-        model.addAttribute("FacilityTypeID", FacilityTypeID);
+
         if (facilityPage.isEmpty()) {
             throw new Exception();
         } else {
@@ -71,6 +71,7 @@ public class FacilityController {
         model.addAttribute("rentTypeList", rentTypeList);
 
         model.addAttribute("facility", new Facility());
+
 
         return "/facility/create";
     }

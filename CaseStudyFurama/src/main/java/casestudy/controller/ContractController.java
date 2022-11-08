@@ -82,26 +82,6 @@ public class ContractController {
         return "/contract/create";
     }
 
-    @GetMapping("/createNew")
-    public String createNew(Model model,
-                            @RequestParam(name = "quantity") String quantity) {
-
-
-        ContractDetail contractDetail = new ContractDetail();
-
-        List<Contract> contractList = contractService.findListAll();
-
-        model.addAttribute("contractList", contractList);
-
-        model.addAttribute("contractDetail", contractDetail);
-
-
-
-        contractDetail.setQuantity(quantity);
-        contracDetailService.save(contractDetail);
-        return "/contract/list";
-    }
-
     @PostMapping("/save")
     public String save(@ModelAttribute Contract contract) {
 
@@ -120,7 +100,6 @@ public class ContractController {
         model.addAttribute("customerList", customerList);
         model.addAttribute("facilityList", facilityList);
         model.addAttribute("employeeList", employeeList);
-
         model.addAttribute("contract", contractService.findById(id));
 
         return "/contract/edit";
@@ -133,8 +112,12 @@ public class ContractController {
     }
 
     @GetMapping("/delete")
-    public String delete(@RequestParam(name = "id") Integer id) {
-        contractService.remove(id);
+    public String delete(@RequestParam(name = "id") Integer id,
+                         @RequestParam(name = "arr") Integer[] arr) {
+        for (Integer i=1;i<=arr.length;i++){
+            contractService.remove(arr[i]);
+        }
+//        contractService.remove(id);
         return "redirect:/contract/list";
     }
 

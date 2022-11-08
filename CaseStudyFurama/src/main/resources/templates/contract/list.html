@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/html">
 <head th:replace="/layout :: head">
 </head>
 <body>
@@ -33,9 +34,12 @@
         <th>customer</th>
         <th>employee</th>
         <th>facility</th>
-        <th>NEW</th>
         <th>Edit</th>
-        <th>Delete</th>
+        <th>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#deleteModal">
+                DELETE
+            </button>
+        </th>
         <th>View</th>
     </tr>
     </thead>
@@ -49,17 +53,9 @@
         <td th:text="${contract.employee.name}"></td>
         <td th:text="${contract.facility.name}"></td>
 
-        <td>
-            <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                Launch static backdrop modal
-            </button>
-        </td>
-
-
         <!-- EDIT -->
         <td>
-            <a th:href="@{/contract/{id}/edit(id=${contract.id})}">
+            <a  th:href="@{/contractdetaildto/viewContractDetail/{id}(id=${contract.id})}">
                 <buton class="btn btn-success">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                          class="bi bi-pencil" viewBox="0 0 16 16">
@@ -69,23 +65,26 @@
             </a>
         </td>
         <!-- DELETE -->
+
         <td>
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#deleteModal"
-                    th:attr="onclick=|getIdToDelete('${contract.id}','${contract.customer.name}','${contract.employee.name}','${contract.facility.name}')|">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                     class="bi bi-trash" viewBox="0 0 16 16">
-                    <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
-                    <path fill-rule="evenodd"
-                          d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
-                </svg>
-            </button>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"
+                       th:attr="onclick=|getIdToDelete('${contract.id}')|">
+                <label class="form-check-label" for="flexCheckDefault">
+                    DELETE
+                </label>
+            </div>
+
         </td>
+
         <!-- VIEW -->
         <td>
-            <button th:attr="onclick=|infoToDetail('${contract.id}','${contract.customer.name}','${contract.employee.name}','${contract.facility.name}')|"
-                    class="btn btn-warning"
-                    type="button" data-bs-toggle="modal" data-bs-target="#detailModal">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search"
+            <button
+                    th:attr="onclick=|infoToModal('${contract.id}')|"
+                    class="btn btn-primary"
+                    data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                     class="bi bi-search"
                      viewBox="0 0 16 16">
                     <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
                 </svg>
@@ -94,133 +93,59 @@
     </tr>
     </tbody>
 
-    <!-- Modal -->
-    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-         aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div id="form">
-                        <form action="/contract/createNew"
-                              method="GET" novalidate="novalidate">
-<!--                            <input type="hidden" th:field="*{id}"/>-->
-<!--                            <div>-->
-<!--                                <label>Name</label>-->
-<!--                                <input type="text" th:field="*{quantity}"/>-->
-<!--                            </div>-->
-<!--                            <div>-->
-<!--                                <label>dateOfBirth</label>-->
-<!--                                <input type="date" th:field="*{dateOfBirth}"/>-->
-<!--                            </div>-->
-<!--                            <div>-->
-<!--                                <label>gender</label>-->
-<!--                                <input type="radio" th:field="*{gender}" value="0"/>MALE-->
-<!--                                <input type="radio" th:field="*{gender}" value="1"/>FEMALE-->
-<!--                            </div>-->
-<!--                            <div>-->
-<!--                                <label>idCard</label>-->
-<!--                                <input type="number" th:field="*{idCard}"/>-->
-<!--                            </div>-->
-<!--                            <div>-->
-<!--                                <label>note</label>-->
-<!--                                <input type="number" th:field="*{phoneNumber}"/>-->
-<!--                            </div>-->
-<!--                            <div>-->
-<!--                                <label>email</label>-->
-<!--                                <input type="text" th:field="*{email}"/>-->
-<!--                            </div>-->
-<!--                            <div>-->
-<!--                                <label>address</label>-->
-<!--                                <input type="text" th:field="*{address}"/>-->
-<!--                            </div>-->
-                            <div>
-                                <label>contractList:</label>
-                                <select >
-                                    <option th:each="p : ${contractList}"
-                                            th:value="${p.id}"
-                                            th:text="${p.customer.name}"></option>
-                                </select>
-                            </div>
-                            <input type="submit" value="Save"/>
-                        </form>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Understood</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <!-- Modal Delete-->
-    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-         aria-hidden="true">
-        <div class="modal-dialog">
-            <form action="/contract/delete" method="get">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h2 class="modal-title text-danger" id="exampleModalLabel">customer</h2>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body ">
-                        <b>ID :</b>
-                        <input type="text" readonly name="id" id="idDelete" class="form-control"><br>
-                        <b>Name customer :</b>
-                        <input type="text" readonly name="name" id="nameCDelete" class="form-control"><br>
-                        <b>Name employee :</b>
-                        <input type="text" readonly name="name" id="nameEDelete" class="form-control"><br>
-                        <b>Name facility :</b>
-                        <input type="text" readonly name="name" id="nameFDelete" class="form-control"><br>
-                        <h3 class="text-danger">Are you sure want delete </h3>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary" value="delete">Yes</button>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-
-
-    <!-- Modal view-->
-    <div class="modal fade" id="detailModal" tabindex="-1" aria-labelledby="exampleModalLabel1"
-         aria-hidden="true">
-        <div class="modal-dialog">
-            <form>
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h2 class="modal-title text-danger" id="exampleModalLabel1">Blog</h2>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body ">
-                        <b>ID :</b>
-                        <input type="text" readonly name="id" id="detailId" class="form-control"><br>
-                        <b>Name customer :</b>
-                        <input type="text" readonly name="name" id="detailNameC" class="form-control"><br>
-                        <b>Name employee :</b>
-                        <input type="text" readonly name="name" id="detailNameE" class="form-control"><br>
-                        <b>Name facility :</b>
-                        <input type="text" readonly name="name" id="detailNameF" class="form-control"><br>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
 
 </table>
 
+<!-- Modal Delete-->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <form action="/contract/delete" method="get">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title text-danger" id="exampleModalLabel">customer</h2>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
+                </div>
+                <div class="modal-body ">
+                    <b>ID :</b>
+                    <input type="ar" readonly name="arr" id="arr" class="form-control"><br>>
+                    <h3 class="text-danger">Are you sure want delete </h3>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" value="delete">Yes</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<!-- Modal VIEW-->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title text-danger text-center" id="exampleModalLabel">Attach Facility List</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <table>
+                    <tr>
+                        <th>No.</th>
+                        <th>quantity</th>
+                        <th>attachFacility</th>
+                    </tr>
+                    <tbody id="table">
+                    </tbody>
+
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 <!-- Phan Trang -->
 <div class="d-flex justify-content-end ">
@@ -247,24 +172,43 @@
 </div>
 
 <script>
+
+    let arr = new Array();
+
+    console.log(arr);
+
     // <%--    thêm value cho thẻ delete--%>
-    function getIdToDelete(id, nameC, nameE, nameF) {
-        document.getElementById("idDelete").value = id;
-        document.getElementById("nameCDelete").value = nameC;
-        document.getElementById("nameEDelete").value = nameE;
-        document.getElementById("nameFDelete").value = nameF;
+    function getIdToDelete(id) {
+        arr.push(id)
+        document.getElementById("arr").value = arr;
+
+    }
+    // <%--    thêm value cho thẻ view--%>
+    function infoToModal(id) {
+        $.ajax({
+            type: "GET",
+            url: "http://localhost:8080/contractdetaildto/viewContractDetail/" + id,
+            success: function (contractdetaildtoList) {
+                let htmlStr = '';
+                for (let i = 0; i < contractdetaildtoList.length; i++) {
+
+                    htmlStr += `<tr>
+                       <td>${contractdetaildtoList[i].id}</td>
+                        <td>${contractdetaildtoList[i].quantity}</td>
+                        <td>${contractdetaildtoList[i].attachFacility}</td>
+                    </tr>`;
+                }
+                $("#table").html(htmlStr);
+            },
+            error: function (resultError) {
+            }
+        });
     }
 
-    // <%--    thêm value cho thẻ view--%>
-    function infoToDetail(id, nameC, nameE, nameF) {
-        document.getElementById("detailId").value = id;
-        document.getElementById("detailNameC").value = nameC;
-        document.getElementById("detailNameE").value = nameE;
-        document.getElementById("detailNameF").value = nameF;
+    function idContract(id) {
+        $('#idContract').val(id);
     }
 </script>
 
-
 <footer th:replace="/layout :: footer"></footer>
 </body>
-</html>
