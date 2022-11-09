@@ -15,6 +15,7 @@ import casestudy.service.employee.IEmployeeService;
 import casestudy.service.facility.IFacilityService;
 import casestudy.service.facility.IFacilityTypeService;
 import casestudy.service.facility.IRentTypeService;
+import casestudy.service.impl.contract.AttachFacilityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -45,6 +46,10 @@ public class ContractController {
 
     @Autowired
     private IEmployeeService employeeService;
+
+    @Autowired
+    private AttachFacilityService attachFacilityService;
+
 
     @GetMapping("/list")
     public String goPage(Model model,
@@ -117,15 +122,31 @@ public class ContractController {
         for (Integer i=1;i<=arr.length;i++){
             contractService.remove(arr[i]);
         }
-//        contractService.remove(id);
         return "redirect:/contract/list";
     }
+    @GetMapping("/themMoi/{id}")
+    public String create(Model model,@PathVariable int id) {
+
+        ContractDetail contractDetail = new ContractDetail();
+
+        model.addAttribute("attachFacilityList", attachFacilityService.findListAll());
+        model.addAttribute("ContractDetail", contractDetail);
+        model.addAttribute("contract", contractService.findById(id));
 
 
+        return "/contract/createContractDetail";
+    }
+
+    @PostMapping("/luu")
+    public String save(@ModelAttribute ContractDetail contractDetail) {
+
+        contracDetailService.save(contractDetail);
+
+        return "redirect:/contract/list";
+    }
     @ExceptionHandler(value = Exception.class)
     public String error() {
         return "/error";
     }
-
 
 }

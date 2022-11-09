@@ -10,41 +10,27 @@
     </a>
 </p>
 <div id="form">
-    <form th:action="@{/contract/save}" th:object="${contract}"
+    <form th:action="@{/contract/luu}" th:object="${ContractDetail}"
           method="POST" novalidate="novalidate">
         <input type="hidden" th:field="*{id}"/>
+
         <div>
-            <label>Name</label>
-            <input type="date" th:field="*{startDate}"/>
+            <label>quantity</label>
+            <input type="number" th:field="*{quantity}"/>
+
         </div>
         <div>
-            <label>area</label>
-            <input type="date" th:field="*{endDate}"/>
-        </div>
-        <div>
-            <label>cost</label>
-            <input type="number" th:field="*{deposit}"/>
-        </div>
-        <div>
-            <label>customer:</label>
-            <select th:field="*{customer}">
-                <option th:each="p : ${customerList}"
-                        th:value="${p.id}"
-                        th:text="${p.name}"></option>
+<!--            <input hidden  th:value="${contract.id}">-->
+
+            <select hidden th:field="*{contract}">
+                <option th:each="p : ${contract}"
+                        th:value="${p.id}"></option>
             </select>
         </div>
         <div>
-            <label>employee:</label>
-            <select th:field="*{employee}">
-                <option th:each="p : ${employeeList}"
-                        th:value="${p.id}"
-                        th:text="${p.name}"></option>
-            </select>
-        </div>
-        <div>
-            <label>facility:</label>
-            <select th:field="*{facility}">
-                <option th:each="p : ${facilityList}"
+            <label>attachFacility :</label>
+            <select th:field="*{attachFacility}">
+                <option th:each="p : ${attachFacilityList}"
                         th:value="${p.id}"
                         th:text="${p.name}"></option>
             </select>

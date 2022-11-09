@@ -130,7 +130,7 @@
                 </div>
                 <div class="modal-body ">
                     <b>ID :</b>
-                    <input type="text" readonly name="id" id="idDelete" class="form-control"><br>
+                    <input type="hidden" readonly name="id" id="idDelete" class="form-control"><br>
                     <b>Name :</b>
                     <input type="text" readonly name="name" id="nameDelete" class="form-control"><br>
                     <h3 class="text-danger">Are you sure want delete </h3>
@@ -202,7 +202,6 @@
 <script>
     // <%--    thêm value cho thẻ delete--%>
     function getIdToDelete(id, name) {
-        let arr =new Array();
         document.getElementById("idDelete").value = id;
         document.getElementById("nameDelete").value = name;
     }

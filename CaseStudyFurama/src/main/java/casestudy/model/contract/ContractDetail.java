@@ -52,4 +52,5 @@ public class ContractDetail {
     public void setAttachFacility(AttachFacility attachFacility) {
         this.attachFacility = attachFacility;
     }
+
 }

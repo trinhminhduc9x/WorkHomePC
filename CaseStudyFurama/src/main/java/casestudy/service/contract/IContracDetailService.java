@@ -1,5 +1,6 @@
 package casestudy.service.contract;
 
+import casestudy.dto.DucDepTrai;
 import casestudy.model.contract.ContractDetail;
 import casestudy.service.IGeneralService;
 import org.springframework.data.domain.Page;
@@ -31,5 +32,6 @@ public interface IContracDetailService extends IGeneralService<ContractDetail> {
 
     List<ContractDetail> findListcontractId( Integer contractId);
 
-    List<Object> findAllcontractId( Integer contractId);
+    List<DucDepTrai> findListByCustomerId(Integer contractId);
+
 }
