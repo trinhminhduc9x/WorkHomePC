@@ -13,8 +13,8 @@ public interface IContractDetailRepository extends JpaRepository<ContractDetail,
     List<ContractDetail> findListById(@Param("contractId") Integer contractId);
 
     @Query(value = " SELECT \n" +
-            "    attach_facility.name name1,\n" +
-            "    customer.name name2\n" +
+            "    attach_facility.name nameFacility,\n" +
+            "    customer.name nameCustomer\n" +
             "FROM\n" +
             "    furama_minhduc.contract_detail\n" +
             "        join\n" +

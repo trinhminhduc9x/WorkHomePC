@@ -57,6 +57,4 @@ public class ContractDetailDtoController {
         return new ResponseEntity<>(contractDetailList, HttpStatus.OK);
     }
 
-
-
 }

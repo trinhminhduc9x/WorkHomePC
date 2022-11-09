@@ -54,6 +54,7 @@
         <th>email</th>
         <th>address</th>
         <th>customerType</th>
+        <th>XEM DỊCH VỤ ĐI KÈM</th>
         <th>Edit</th>
         <th>Delete</th>
         <th>View</th>
@@ -75,6 +76,15 @@
         <td th:text="${customer.address}"></td>
         <td th:text="${customer.customerType.name}"></td>
 
+
+        <!-- XEM DỊCH VỤ ĐI KÈM -->
+
+        <td>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#view"
+                    th:attr="onclick=|infoToModal('${customer.id}')|">
+                XEM DỊCH VỤ ĐI KÈM
+            </button>
+        </td>
 
         <!-- EDIT -->
         <td><a th:href="@{/customer/{id}/edit(id=${customer.id})}">
@@ -173,6 +183,21 @@
     </div>
 </div>
 
+<!-- Modal XEM DỊCH VỤ ĐI KÈM-->
+<div class="modal fade " id="view" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
+     style="color: #0000ff">
+    <div class="modal-dialog ">
+        <div class="modal-content bg-white">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel1">Hợp đồng chi tiết</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="table">
+
+            </div>
+        </div>
+    </div>
+</div>
 
 <!-- Phan Trang -->
 <div class="d-flex justify-content-end ">
@@ -213,6 +238,34 @@
         document.getElementById("detailphoneNumber").value = phoneNumber;
     }
 </script>
+
+
+<script>
+    // <%--    thêm value cho thẻ view--%>
+    function infoToModal(id) {
+        $("#table").empty();
+        console.log(id)
+        $.ajax({
+            url: "http://localhost:8080/contractdetaildto/hello/" + id,
+            type: "GET",
+            contentType: "application/json; charset =utf-8",
+            dataType: "json",
+            success: function (DATA) {
+                console.log(DATA)
+                let tr = [];
+                for (let i = 0; i < DATA.length; i++) {
+                    tr.push("<tr>")
+                    tr.push("<td>" + DATA[i].nameFacility + "</td>")
+                    tr.push("</tr>")
+                }
+                $("#table").append(tr.join(""));
+
+            }
+        })
+    }
+</script>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <footer th:replace="/layout :: footer"></footer>
 </body>
 </html>
