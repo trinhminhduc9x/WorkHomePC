@@ -28,7 +28,7 @@ public class Contract {
     @JoinColumn(name = "facility_id", referencedColumnName = "id")
     private Facility facility;
 
-    @OneToMany(mappedBy = "contract")
+    @OneToMany(mappedBy = "contract",cascade = CascadeType.REMOVE)
     @JsonBackReference
     private List<ContractDetail> contractDetailList;
 

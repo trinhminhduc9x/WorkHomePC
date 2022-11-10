@@ -1,39 +1,60 @@
-package casestudy.model.employee;
+package casestudy.dto.employee;
 
-import javax.persistence.*;
+import casestudy.model.employee.User;
+import org.springframework.stereotype.Component;
+import org.springframework.validation.Errors;
+import org.springframework.validation.Validator;
 
-@Entity
-@Table(name = "employee")
-public class Employee {
-    @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
+@Component
+public class EmployeeDto implements Validator {
+
     private Integer id;
+
+    @Size(min = 5, max = 45)
     private String name;
+
     private String dateOfBirth;
+    @NotBlank
+    @Pattern(regexp = "[0-9]{9}",
+            message = "chứng minh nhân dân có 9 chữ số")
+    @Size(min = 1, max = 800)
     private String idCard;
+
     private String salary;
+    @NotBlank
+    @Pattern(regexp = "^(0|\\+84)(\\s|\\.)?((3[2-9])|(5[689])|(7[06-9])|(8[1-689])|(9[0-46-9]))(\\d)(\\s|\\.)?(\\d{3})(\\s|\\.)?(\\d{3})$",
+            message = "điền số điện thoại bắt đầu bằng 0 hoặc 84 ")
+    @Size(min = 1, max = 800)
     private String phoneNumber;
+    @NotBlank
+    @Pattern(regexp = "^(\\w+)@(\\w+)$",
+            message = "điền email theo dang abc@abc ")
+    @Size(min = 1, max = 800)
     private String email;
+
     private String address;
-    @ManyToOne
-    @JoinColumn(name = "position_id",referencedColumnName = "id")
+
+
     private Position position;
-    @ManyToOne
-    @JoinColumn(name = "division_id",referencedColumnName = "id")
-    private Division division;
-    @ManyToOne
-    @JoinColumn(name = "education_degree_id",referencedColumnName = "id")
-    private EducationDegree educationDegree;
 
 
-    @ManyToOne
-    @JoinColumn(name = "user_name",referencedColumnName = "username")
+    private DivisionDto division;
+
+
+    private EducationDegreeDto educationDegreeDto;
+
+
     private User user;
 
-    public Employee() {
+
+    public EmployeeDto() {
     }
 
-    public Employee(Integer id, String name, String dateOfBirth, String idCard, String salary, String phoneNumber, String email, String address, Position position, Division division, EducationDegree educationDegree, User user) {
+    public EmployeeDto(Integer id, String name, String dateOfBirth, String idCard, String salary, String phoneNumber, String email, String address, Position position, DivisionDto division, EducationDegreeDto educationDegreeDto, User user) {
         this.id = id;
         this.name = name;
         this.dateOfBirth = dateOfBirth;
@@ -44,10 +65,9 @@ public class Employee {
         this.address = address;
         this.position = position;
         this.division = division;
-        this.educationDegree = educationDegree;
+        this.educationDegreeDto = educationDegreeDto;
         this.user = user;
     }
-
 
     public Integer getId() {
         return id;
@@ -121,20 +141,20 @@ public class Employee {
         this.position = position;
     }
 
-    public Division getDivision() {
+    public DivisionDto getDivision() {
         return division;
     }
 
-    public void setDivision(Division division) {
+    public void setDivision(DivisionDto division) {
         this.division = division;
     }
 
-    public EducationDegree getEducationDegree() {
-        return educationDegree;
+    public EducationDegreeDto getEducationDegreeDto() {
+        return educationDegreeDto;
     }
 
-    public void setEducationDegree(EducationDegree educationDegree) {
-        this.educationDegree = educationDegree;
+    public void setEducationDegreeDto(EducationDegreeDto educationDegreeDto) {
+        this.educationDegreeDto = educationDegreeDto;
     }
 
     public User getUser() {
@@ -158,9 +178,18 @@ public class Employee {
                 ", address='" + address + '\'' +
                 ", position=" + position +
                 ", division=" + division +
-                ", educationDegree=" + educationDegree +
+                ", educationDegreeDto=" + educationDegreeDto +
                 ", user=" + user +
                 '}';
     }
 
+    @Override
+    public boolean supports(Class<?> clazz) {
+        return false;
+    }
+
+    @Override
+    public void validate(Object target, Errors errors) {
+
+    }
 }

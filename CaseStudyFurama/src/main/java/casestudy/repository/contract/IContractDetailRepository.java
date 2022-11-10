@@ -1,6 +1,6 @@
 package casestudy.repository.contract;
 
-import casestudy.dto.DucDepTrai;
+import casestudy.dto.ISumDto;
 import casestudy.model.contract.ContractDetail;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -13,20 +13,31 @@ public interface IContractDetailRepository extends JpaRepository<ContractDetail,
     List<ContractDetail> findListById(@Param("contractId") Integer contractId);
 
     @Query(value = " SELECT \n" +
-            "    attach_facility.name nameFacility,\n" +
-            "    customer.name nameCustomer\n" +
-            "FROM\n" +
-            "    furama_minhduc.contract_detail\n" +
-            "        join\n" +
-            "    attach_facility \n" +
-            "    on attach_facility.id=contract_detail.attach_facility_id\n" +
-            "    join\n" +
-            "    contract \n" +
-            "    on contract.id=contract_detail.contract_id\n" +
-            "    join\n" +
-            "    customer\n" +
-            "    on customer.id=contract.customer_id\n" +
-            "WHERE\n" +
-            "    customer_id = :customerId ", nativeQuery = true)
-    List<DucDepTrai> findListByCustomerId(@Param("customerId") Integer contractId);
+            "\t\tattach_facility.name nameFacility,\n" +
+            "\t\tcustomer.name nameCustomer,\n" +
+            "\t\tattach_facility.cost costAttachFacility,\n" +
+            "\t\tcontract_detail.quantity quantity,\n" +
+            "        facility.cost costFacility\n" +
+            "          ,SUM((IFNULL(contract_detail.quantity * attach_facility.cost, 0)) + facility.cost) sumMony\n" +
+            "            FROM\n" +
+            "            customer\n" +
+            "           left  join\n" +
+            "            contract \n" +
+            "             on customer.id =contract.customer_id\n" +
+            "            left   join\n" +
+            "            facility\n" +
+            "            on facility.id=contract.facility_id\n" +
+            "\tleft\t join\n" +
+            "        contract_detail\n" +
+            "        on contract_detail.contract_id=contract.id\n" +
+            "         left join\n" +
+            "               attach_facility \n" +
+            "              on attach_facility.id=contract_detail.attach_facility_id\n" +
+            "\n" +
+            "\t\tWHERE\n" +
+            "           customer_id = :customerId\n" +
+            "            GROUP BY nameFacility", nativeQuery = true)
+    List<ISumDto> findListByCustomerId(@Param("customerId") Integer contractId);
+
+
 }

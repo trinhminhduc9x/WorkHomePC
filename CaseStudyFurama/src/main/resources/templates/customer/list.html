@@ -192,8 +192,14 @@
                 <h5 class="modal-title" id="exampleModalLabel1">Hợp đồng chi tiết</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body" id="table">
+            <div>
 
+
+            </div>
+            <div class="modal-body">
+                <table class="table" id="table">
+                    <!--chỗ ghi ajac-->
+                </table>
             </div>
         </div>
     </div>
@@ -253,9 +259,15 @@
             success: function (DATA) {
                 console.log(DATA)
                 let tr = [];
+                tr.push("<tr><td>TênDVĐK</td><td>TiềnDVĐK</td><td>sốLần</td><td>TiềnDV</td><td>TổngTiền</td></tr>")
                 for (let i = 0; i < DATA.length; i++) {
                     tr.push("<tr>")
                     tr.push("<td>" + DATA[i].nameFacility + "</td>")
+                    tr.push("<td>" + DATA[i].costAttachFacility + "</td>")
+                    tr.push("<td>" + DATA[i].quantity + "</td>")
+                    tr.push("<td>" + DATA[i].costFacility + "</td>")
+                    tr.push("<td>" + DATA[i].sumMony + "</td>")
+
                     tr.push("</tr>")
                 }
                 $("#table").append(tr.join(""));

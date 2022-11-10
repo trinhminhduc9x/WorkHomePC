@@ -31,8 +31,8 @@
         <th>facility name</th>
         <th>Thêm mới hợp đồng chi tiết</th>
         <th>
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#deleteModal">
-                DELETE
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#deleteModal"
+                    th:attr="onclick=|stringArr()|">DELETE
             </button>
         </th>
         <th>View</th>
@@ -52,7 +52,7 @@
         <td>
             <a th:href="@{/contract/themMoi/{id}(id=${contract.id})}">
                 <buton class="btn btn-success">
-               thêm mới hợp đồng chi tiết
+                    thêm mới hợp đồng chi tiết
                 </buton>
             </a>
         </td>
@@ -73,7 +73,7 @@
         <td>
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#view"
                     th:attr="onclick=|infoToModal('${contract.id}')|">
-              Xem hợp đồng chi tiết
+                Xem hợp đồng chi tiết
             </button>
         </td>
 
@@ -95,8 +95,8 @@
                 </div>
                 <div class="modal-body ">
                     <b>ID :</b>
-                    <input type="text" readonly name="arr" id="arr" class="form-control"><br>>
-                    <h3 class="text-danger">Are you sure want delete </h3>
+                    <input type="hidden" readonly name="stringArr" id="stringArr" class="form-control"><br>>
+                    <h3 class="text-danger">Bạn có chắc chắn xóa hay không</h3>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -116,7 +116,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body" id="table">
-
+<!--           hien thi cac gia tri-->
             </div>
         </div>
     </div>
@@ -154,9 +154,15 @@
     console.log(arr);
 
     // <%--    thêm value cho thẻ delete--%>
+    function stringArr() {
+        let stringArr = arr.toString();
+        console.log(stringArr);
+        document.getElementById("stringArr").value = stringArr;
+    }
+
+    // <%--    thêm value cho thẻ delete--%>
     function getIdToDelete(id) {
         arr.push(id)
-        document.getElementById("arr").value = arr;
     }
 </script>
 
@@ -176,8 +182,6 @@
                 let tr = [];
                 for (let i = 0; i < contractdetaildtoList.length; i++) {
                     tr.push("<tr>")
-                    tr.push("<td>" + contractdetaildtoList[i].id + "</td>")
-                    tr.push("<td>" + contractdetaildtoList[i].quantity + "</td>")
                     tr.push("<td>" + contractdetaildtoList[i].attachFacility.name + "</td>")
                     tr.push("<td>" + contractdetaildtoList[i].attachFacility.cost + "</td>")
                     tr.push("</tr>")

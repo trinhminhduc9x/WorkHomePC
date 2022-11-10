@@ -1,19 +1,13 @@
 package casestudy.controller;
 
-import casestudy.dto.DucDepTrai;
-import casestudy.model.contract.AttachFacility;
-import casestudy.model.contract.Contract;
+import casestudy.dto.ISumDto;
 import casestudy.model.contract.ContractDetail;
-import casestudy.model.customer.Customer;
-import casestudy.model.employee.Employee;
-import casestudy.model.facility.Facility;
 import casestudy.service.contract.IContracDetailService;
 import casestudy.service.contract.IContractService;
 import casestudy.service.impl.contract.AttachFacilityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -49,12 +43,16 @@ public class ContractDetailDtoController {
     }
 
     @GetMapping("/hello/{id}")
-    public ResponseEntity<List<DucDepTrai>> viewHello(@PathVariable int id) {
-        List<DucDepTrai> contractDetailList =contracDetailService.findListByCustomerId(id);
+    public ResponseEntity<List<ISumDto>> viewHello(@PathVariable int id) {
+
+        List<ISumDto> contractDetailList =contracDetailService.findListByCustomerId(id);
+
+
         if (contractDetailList.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
         return new ResponseEntity<>(contractDetailList, HttpStatus.OK);
     }
+
 
 }
