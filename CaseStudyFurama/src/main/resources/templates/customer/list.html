@@ -259,6 +259,7 @@
             success: function (DATA) {
                 console.log(DATA)
                 let tr = [];
+                let  sum = 0;
                 tr.push("<tr><td>TênDVĐK</td><td>TiềnDVĐK</td><td>sốLần</td><td>TiềnDV</td><td>TổngTiền</td></tr>")
                 for (let i = 0; i < DATA.length; i++) {
                     tr.push("<tr>")
@@ -267,9 +268,12 @@
                     tr.push("<td>" + DATA[i].quantity + "</td>")
                     tr.push("<td>" + DATA[i].costFacility + "</td>")
                     tr.push("<td>" + DATA[i].sumMony + "</td>")
-
+                    sum = sum + Number(DATA[i].sumMony);
                     tr.push("</tr>")
                 }
+                console.log(sum)
+                tr.push("<tr><td>tổng tiền là </td><td></td><td></td><td></td><td>"+sum+"</td></tr>")
+
                 $("#table").append(tr.join(""));
 
             }
