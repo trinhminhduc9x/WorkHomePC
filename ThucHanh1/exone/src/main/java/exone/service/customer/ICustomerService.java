@@ -1,36 +1,17 @@
 package exone.service.customer;
 
-
-
 import exone.model.customer.Customer;
-import exone.service.IGeneralService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 
-public interface ICustomerService extends IGeneralService<Customer> {
-    @Override
-    List<Customer> findListAll();
-
-    @Override
-    List<Customer> findListById(Integer id);
-
-    @Override
+public interface ICustomerService {
     void save(Customer customer);
+    Page<Customer> findPageNameEmailType(Pageable pageable, String name,String email,Integer CustomerTypeID);
+    Customer findById(int id);
+    void deleteById(int id);
+    List<Customer> findAllList();
 
-    @Override
-    Customer findById(Integer id);
-
-    @Override
-    void update(Customer customer);
-
-    @Override
-    Page<Customer> findPageNameAll(Pageable pageable, String name);
-
-    @Override
-    void remove(Integer id);
-
-    Page<Customer> findPageNameEmailType(Pageable pageable, String name,String email,String CustomerTypeID);
 
 }

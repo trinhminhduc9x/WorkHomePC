@@ -1,5 +1,6 @@
 package exone.service.impl;
 
+
 import exone.model.customer.Customer;
 import exone.repository.customer.ICustomerRepository;
 import exone.service.customer.ICustomerService;
@@ -12,47 +13,34 @@ import java.util.List;
 
 @Service
 public class CustomerService implements ICustomerService {
-
     @Autowired
-    ICustomerRepository repository;
-
-    @Override
-    public List<Customer> findListAll() {
-        return repository.findAll();
-    }
-
-    @Override
-    public List<Customer> findListById(Integer id) {
-        return repository.findListById(id);
-    }
+    private ICustomerRepository iCustomerRepository;
 
     @Override
     public void save(Customer customer) {
-        repository.save(customer);
+        this.iCustomerRepository.save(customer);
     }
 
     @Override
-    public Customer findById(Integer id) {
-        return repository.findById(id).orElse(new Customer());
+    public Page<Customer> findPageNameEmailType(Pageable pageable, String name, String email, Integer CustomerTypeID) {
+        return this.iCustomerRepository.findAllByNameAndEmailAndCustomerTypeID(pageable, name , email , CustomerTypeID );
+    }
+
+
+    @Override
+    public Customer findById(int id) {
+        return this.iCustomerRepository.findById(id).orElse(null);
     }
 
     @Override
-    public void update(Customer customer) {
-        repository.save(customer);
+    public void deleteById(int id) {
+        this.iCustomerRepository.deleteById(id);
     }
 
     @Override
-    public Page<Customer> findPageNameAll(Pageable pageable, String name) {
-        return null;
+    public List<Customer> findAllList() {
+        return this.iCustomerRepository.findAll();
     }
 
-    @Override
-    public void remove(Integer id) {
-        repository.deleteById(id);
-    }
 
-    @Override
-    public Page<Customer> findPageNameEmailType(Pageable pageable, String name, String email, String CustomerTypeID) {
-        return this.repository.findAllByNameAndEmailAndCustomerTypeID(pageable,"%"+ name + "%","%"+ email + "%","%"+ CustomerTypeID + "%");
-    }
 }

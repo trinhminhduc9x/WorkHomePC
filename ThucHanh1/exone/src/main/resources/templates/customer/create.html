@@ -1,93 +1,128 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="/layout :: head">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Customer</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/my-style.css">
+</head>
 <body>
-<div th:replace="~{/layout::navbar}"></div>
-<h3>customer</h3>
-<p>
-    <a th:href="@{/}">
-        Back to list
-    </a>
-</p>
-<th:block th:if="${message!=null}">
-    <h4 th:text="${message}"></h4>
-</th:block>
-<div id="form">
-    <form th:action="@{/save}" th:object="${customerDto}"
-          method="POST" novalidate="novalidate">
-        <input type="hidden" th:field="*{id}"/>
-        <div>
-            <label>Name</label>
-            <input type="text" th:field="*{name}"/>
-            <tr>
-                <td th:if="${#fields.hasErrors('name')}"
-                    th:errors="*{name}">Name Error
-                </td>
-            </tr>
+<div th:replace="layout :: header"></div>
+
+
+
+<div class="container d-flex justify-content-md-center mb-5" style="margin-top: 20px">
+    <div class="row">
+        <div class="col-md-12 bg-light info">
+            <form action="/customer/create" method="post" th:object="${customerDto}">
+                <fieldset>
+                    <legend style="text-align: center">Customer Information</legend>
+                    <table>
+                        <tr>
+                            <td>Name
+                            </td>
+                            <td>
+                                <input type="text" name="name" id="name"
+                                       class="form-control"
+                                       title="Input cho dung' hi?"
+                                       th:field="*{name}">
+                                <div class="text-danger" th:errors="*{name}"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Birthday
+                            </td>
+                            <td>
+                                <input type="date" name="birthday" id="birthday" class="form-control"
+                                       th:field="*{birthday}">
+                                <div class="text-danger" th:errors="*{birthday}"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Gender</td>
+                            <td>
+                                <select name="gender" id="gender" class="form-select"
+                                        th:field="*{gender}">
+                                    <option value="1">Male</option>
+                                    <option value="0">Female</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Identify Card
+                            </td>
+                            <td>
+                                <input type="text" name="idCard" class="form-control"
+                                       th:field="*{identifyCard}">
+                                <div class="text-danger" th:errors="*{identifyCard}"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Phone Number
+                            </td>
+                            <td>
+                                <input type="text" name="phoneNumber" class="form-control"
+                                       th:field="*{phoneNumber}">
+                                <div class="text-danger" th:errors="*{phoneNumber}"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Email
+                            </td>
+                            <td>
+                                <input type="text" name="email" class="form-control"
+                                       th:field="*{email}">
+                                <div class="text-danger" th:errors="*{email}"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Address
+                            </td>
+                            <td>
+                                <input type="text" name="address" class="form-control"
+                                       th:field="*{address}">
+                                <div class="text-danger" th:errors="*{address}"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Customer Type</td>
+                            <td>
+                                <select name="customerType" class="form-select"
+                                        th:field="*{customerType}">
+                                    <option th:each="customerTypeObj : ${customerTypeList}"
+                                            th:value="${customerTypeObj.id}"
+                                            th:text="${customerTypeObj.name}">
+                                    </option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><input type="reset" value="Clear"></td>
+                            <td><input type="submit" value="Create new Customer" class=" btn-success"></td>
+                        </tr>
+                    </table>
+                </fieldset>
+            </form>
         </div>
-        <div>
-            <label>dateOfBirth</label>
-            <input type="date" th:field="*{dateOfBirth}"/>
-            <tr>
-                <td th:if="${#fields.hasErrors('dateOfBirth')}"
-                    th:errors="*{dateOfBirth}">dateOfBirth Error
-                </td>
-            </tr>
-        </div>
-        <div>
-            <label>gender</label>
-            <input type="radio" th:field="*{gender}" value="0"/>MALE
-            <input type="radio" th:field="*{gender}" value="1"/>FEMALE
-        </div>
-        <div>
-            <tr>
-                <label>idCard</label>
-                <input type="number" th:field="*{idCard}"/>
-            </tr>
-            <tr>
-                <td th:if="${#fields.hasErrors('idCard')}"
-                    th:errors="*{idCard}">idCard Error
-                </td>
-            </tr>
-        </div>
-        <div>
-            <label>note</label>
-            <input type="number" th:field="*{phoneNumber}"/>
-            <tr>
-                <td th:if="${#fields.hasErrors('phoneNumber')}"
-                    th:errors="*{phoneNumber}">phoneNumber Error
-                </td>
-            </tr>
-        </div>
-        <div>
-            <label>email</label>
-            <input type="text" th:field="*{email}"/>
-            <tr>
-                <td th:if="${#fields.hasErrors('email')}"
-                    th:errors="*{email}">email Error
-                </td>
-            </tr>
-        </div>
-        <div>
-            <label>address</label>
-            <input type="text" th:field="*{address}"/>
-            <tr>
-                <td th:if="${#fields.hasErrors('address')}"
-                    th:errors="*{address}">address Error
-                </td>
-            </tr>
-        </div>
-        <div>
-            <label>CustomerType:</label>
-            <select th:field="*{customerType}">
-                <option th:each="p : ${customerTypeList}"
-                        th:value="${p.id}"
-                        th:text="${p.name}"></option>
-            </select>
-        </div>
-        <input type="submit" value="Save"/>
-    </form>
+    </div>
 </div>
-<footer th:replace="/layout :: footer"></footer>
+
+<div th:replace="layout :: footer"></div>
+
+
+<script src="/js/jquery-3.6.0.min.js"></script>
+
+
+
+<script src="/js/bootstrap.js"></script>
+
+
+<script>
+    $(function (){
+       $("#name").title();
+    });
+</script>
+
+
 </body>
 </html>
