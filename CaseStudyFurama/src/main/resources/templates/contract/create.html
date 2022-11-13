@@ -1,58 +1,159 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="/layout :: head">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Contract</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/my-style.css">
+</head>
 <body>
-<div th:replace="~{/layout::navbar}"></div>
-<h3>facility</h3>
-<p>
-    <a th:href="@{/contract/list}">
-        Back to list
-    </a>
-</p>
-<div id="form">
-    <form th:action="@{/contract/save}" th:object="${contract}"
-          method="POST" novalidate="novalidate">
-        <input type="hidden" th:field="*{id}"/>
-        <div>
-            <label>Name</label>
-            <input type="date" th:field="*{startDate}"/>
-        </div>
-        <div>
-            <label>area</label>
-            <input type="date" th:field="*{endDate}"/>
-        </div>
-        <div>
-            <label>cost</label>
-            <input type="number" th:field="*{deposit}"/>
-        </div>
-        <div>
-            <label>customer:</label>
-            <select th:field="*{customer}">
-                <option th:each="p : ${customerList}"
-                        th:value="${p.id}"
-                        th:text="${p.name}"></option>
-            </select>
-        </div>
-        <div>
-            <label>employee:</label>
-            <select th:field="*{employee}">
-                <option th:each="p : ${employeeList}"
-                        th:value="${p.id}"
-                        th:text="${p.name}"></option>
-            </select>
-        </div>
-        <div>
-            <label>facility:</label>
-            <select th:field="*{facility}">
-                <option th:each="p : ${facilityList}"
-                        th:value="${p.id}"
-                        th:text="${p.name}"></option>
-            </select>
-        </div>
+<div th:replace="layout :: header"></div>
 
-        <input type="submit" value="Save"/>
-    </form>
+
+<div class="container d-flex justify-content-md-center" style="margin-top: 20px">
+    <div class="row">
+        <div class="col-md-12 bg-light info">
+            <form method="post" action="/contract/create" th:object="${contractTempObj}">
+                <fieldset>
+                    <legend style="text-align: center">Contract Information</legend>
+                    <table>
+                        <tr>
+                            <td>Start Date</td>
+                            <td>
+                                <input type="date" name="startDate" id="startDate"
+                                       class="form-control"
+                                       th:field="*{startDate}">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>End Date</td>
+                            <td>
+                                <input type="date" name="endDate" id="endDate"
+                                       class="form-control"
+                                       th:field="*{endDate}">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Deposit</td>
+                            <td>
+                                <input type="number" name="deposit" id="deposit"
+                                       class="form-control" th:field="*{deposit}">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Customer</td>
+                            <td>
+                                <select name="customer" id="customer" class="form-select"
+                                        th:field="*{customer}">
+                                    <option value="">-Select Customer-</option>
+                                    <option th:each="customerObj: ${customerList}"
+                                            th:value="${customerObj.id}"
+                                            th:text="${customerObj.name}"></option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Employee</td>
+                            <td>
+                                <select name="employee" id="employee" class="form-select"
+                                        th:field="*{employee}">
+                                    <option value="">-Select Employee-</option>
+                                    <option th:each="employeeObj: ${employeeList}"
+                                            th:value="${employeeObj.id}"
+                                            th:text="${employeeObj.name}"></option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Facility</td>
+                            <td>
+                                <select name="facility" id="facility" class="form-select"
+                                        th:field="*{facility}">
+                                    <option value="">-Select Facility-</option>
+                                    <option th:each="facilityObj: ${facilityList}"
+                                            th:value="${facilityObj.id}"
+                                            th:text="${facilityObj.name}"></option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="hidden" th:field="*{quantity}" id="quantity">
+                                <input type="hidden" th:field="*{attachFacility}" id="attachFacility">
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-primary"
+                                        data-bs-toggle="modal" data-bs-target="#attachedService">
+                                    <img src="/img/plus.png" style="width: 25px;height: auto">
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td><input type="submit" value="Create new Service" class=" btn-success"></td>
+                        </tr>
+                    </table>
+                </fieldset>
+            </form>
+        </div>
+    </div>
 </div>
-<footer th:replace="/layout :: footer"></footer>
+
+<!--modal see attach service-->
+<div class="modal fade" id="attachedService" tabindex="-1" aria-labelledby="attachedServiceLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="attachedServiceLabel">Attached Service List</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <table class="table">
+                    <tr>
+                        <td>#</td>
+                        <td>Name</td>
+                        <td>Unit</td>
+                        <td>Cost</td>
+                        <td>Status</td>
+                    </tr>
+                    <tr th:each="attachFacilityObj, loop: ${attachFacilityList}">
+                        <td th:text="${loop.count}"></td>
+                        <td th:text="${attachFacilityObj.name}"></td>
+                        <td th:text="${attachFacilityObj.unit}"></td>
+                        <td th:text="${attachFacilityObj.cost}"></td>
+                        <td th:text="${attachFacilityObj.status}"></td>
+                    </tr>
+                </table>
+                <div>
+                    <label for="attachFacilityModal">Attach Facility</label>
+                    <select id="attachFacilityModal" class="form-select"
+                            onchange="countTotalMoney()">
+                        <option th:each="attachFacilityObj: ${attachFacilityList}"
+                                th:value="${attachFacilityObj.id}"
+                                th:text="${attachFacilityObj.name}"></option>
+                    </select>
+                </div>
+                <div>
+                    <label for="quantityModal">Quantity</label>
+                    <input type="number" id="quantityModal" class="form-control">
+                </div>
+                <div>
+                    <label for="totalMoneyModal">Total Money</label>
+                    <input type="text" readonly id="totalMoneyModal">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary" id="ok">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:replace="layout :: footer"></div>
+<script src="/js/jquery-3.6.0.min.js"></script>
+<script src="/js/bootstrap.js"></script>
+
 </body>
 </html>

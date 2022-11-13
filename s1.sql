@@ -1,6 +1,4 @@
-use furama_minhduc;
-
-
+use furama_minhduc_beautiful;
 
 INSERT INTO customer_type (name)
 VALUE 
@@ -10,8 +8,10 @@ VALUE
  ('silver'),
  ('Member');
 
+
+
  INSERT INTO customer
-  (`name`,`date_of_birth`, `gender`,`id_card`,`phone_number`, `email`,`address`,`customer_type_id`)
+  (`name`,`birthday`, `gender`,`identify_card`,`phone_number`, `email`,`address`,`customer_type`)
 --  (customer_name,date_of_birth,gender,id_card,phone_number,email,address,customer_type_id)
  VALUE ('Nguyễn Thị Hào','1970-11-07',0,'643431213','0945423362','thihao07@gmail.com','23 Nguyễn Hoàng, Đà Nẵng',5),
   ('Phạm Xuân Diệu','1992-08-08',1,'865342123','0954333333','xuandieu92@gmail.com','K77/22 Thái Phiên, Quảng Trị',3),
@@ -30,7 +30,7 @@ INSERT INTO position (name)
 VALUE ('Quản lý'), 
 ('Nhân viên');
 
-INSERT INTO education_degree (name)
+INSERT INTO education (name)
 VALUE ('Trung cấp'),
 ('Cao Đẳng'), 
 ('Đại học'), 
@@ -52,32 +52,34 @@ INSERT INTO facility_type(name)
 VALUE ('Villa'),
     ('House'),
     ('Room');
+INSERT INTO `furama_minhduc_beautiful`.`facility` ( `area`, `cost`, `description_other_convenience`, `facility_free`, `max_people`, `name`, `number_of_floors`, `pool_area`, `standard_room`, `facility_type`, `rent_type`) VALUES ('1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1');
 
 INSERT INTO facility ( `name`,`area`, `cost`,`max_people`,`standard_room`, `description_other_convenience`,`pool_area`,`number_of_floors`,`facility_free`,`rent_type`,`facility_type`) 
-VALUE ('Villa Beach Front',25000,1000000,10,'vip','Có hồ bơi',500,4,null,3,1),
-     ('House Princess 01',14000,5000000,7,'vip','Có thêm bếp nướng',null,3,null,2,2),
-     ('Room Twin 01',5000,1000000,2,'normal','Có tivi',null,null,'1 Xe máy, 1 Xe đạp',4,3),
-     ('Villa No Beach Front',22000,9000000,8,'normal','Có hồ bơi',300,3,null,3,1),
-     ('House Princess 02',10000,4000000,5,'normal','Có thêm bếp nướng',null,2,null,3,2),
-     ('Room Twin 02',3000,900000,2,'normal','Có tivi',null,null,'1 Xe máy',4,3);
+VALUE ('Villa Beach Front',25000,1000000,10,'vip','Có hồ bơi',500,4,0,3,1),
+     ('House Princess 01',14000,5000000,7,'vip','Có thêm bếp nướng',0,3,0,2,2),
+     ('Room Twin 01',5000,1000000,2,'normal','Có tivi',0,0,'1 Xe máy, 1 Xe đạp',4,3),
+     ('Villa No Beach Front',22000,9000000,8,'normal','Có hồ bơi',300,3,0,3,1),
+     ('House Princess 02',10000,4000000,5,'normal','Có thêm bếp nướng',0,2,0,3,2),
+     ('Room Twin 02',3000,900000,2,'normal','Có tivi',0,0,'1 Xe máy',4,3);
 
-INSERT INTO `furama_minhduc`.`role` (`id`, `name`) VALUES ('1', 'ROLE_USER');
-INSERT INTO `furama_minhduc`.`role` (`id`, `name`) VALUES ('2', 'ROLE_ADMIN');
-
-
-
-INSERT INTO `furama_minhduc`.`user` (`username`, `is_enabled`, `password`) VALUES ('duc', b'1', '$2a$10$dnZ2zK7Oi0rlBAlnwn.06uDNq8YreNVt6mdlvG1UC2OrA2gE3RcXm');
-INSERT INTO `furama_minhduc`.`user` (`username`, `is_enabled`, `password`) VALUES ('vip ', b'1', '$2a$10$dnZ2zK7Oi0rlBAlnwn.06uDNq8YreNVt6mdlvG1UC2OrA2gE3RcXm');
-INSERT INTO `furama_minhduc`.`user` (`username`, `is_enabled`, `password`) VALUES ('admin', b'1', '$2a$10$dnZ2zK7Oi0rlBAlnwn.06uDNq8YreNVt6mdlvG1UC2OrA2gE3RcXm');
-
-
-INSERT INTO `furama_minhduc`.`user_role` (`use_name`, `role_id`) VALUES ('admin', '1');
-INSERT INTO `furama_minhduc`.`user_role` (`use_name`, `role_id`) VALUES ('duc', '1');
-INSERT INTO `furama_minhduc`.`user_role` (`use_name`, `role_id`) VALUES ('admin', '2');
+INSERT INTO `furama_minhduc_beautiful`.`role` (`id`, `name`) VALUES ('1', 'ROLE_USER');
+INSERT INTO `furama_minhduc_beautiful`.`role` (`id`, `name`) VALUES ('2', 'ROLE_ADMIN');
 
 
 
-INSERT INTO `furama_minhduc`.`employee` (`name`,`date_of_birth`,`id_card`,`salary`,`phone_number`,`email`,`address`,`position_id`,`education_degree_id`,`division_id`, `user_name`) 
+INSERT INTO `furama_minhduc_beautiful`.`user` (`username`, `is_enabled`, `password`) VALUES ('duc', b'1', '$2a$10$dnZ2zK7Oi0rlBAlnwn.06uDNq8YreNVt6mdlvG1UC2OrA2gE3RcXm');
+INSERT INTO `furama_minhduc_beautiful`.`user` (`username`, `is_enabled`, `password`) VALUES ('vip ', b'1', '$2a$10$dnZ2zK7Oi0rlBAlnwn.06uDNq8YreNVt6mdlvG1UC2OrA2gE3RcXm');
+INSERT INTO `furama_minhduc_beautiful`.`user` (`username`, `is_enabled`, `password`) VALUES ('admin', b'1', '$2a$10$dnZ2zK7Oi0rlBAlnwn.06uDNq8YreNVt6mdlvG1UC2OrA2gE3RcXm');
+
+
+INSERT INTO `furama_minhduc_beautiful`.`user_role` (`use_name`, `role_id`) VALUES ('admin', '1');
+INSERT INTO `furama_minhduc_beautiful`.`user_role` (`use_name`, `role_id`) VALUES ('duc', '1');
+INSERT INTO `furama_minhduc_beautiful`.`user_role` (`use_name`, `role_id`) VALUES ('admin', '2');
+
+-- INSERT INTO `furama_minhduc_beautiful`.`employee` (`id`, `address`, `birthday`, `email`, `id_card`, `name`, `phone_number`, `salary`, `division`, `education`, `position`, `user_name`) VALUES ('1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1');
+
+
+INSERT INTO `employee` (`name`,`birthday`,`id_card`,`salary`,`phone_number`,`email`,`address`,`position`,`education`,`division`, `user_name`) 
 VALUE ('Nguyễn Văn Anh','1970-11-07', '456231786',10000000,'0901234121','annguyen@gMAIL.COM','295 Nguyễn Tất Thành, Đà Nẵng',1,3,1,'duc'),
  ('Lê Văn Bình','1997-04-09', '654231234',7000000,'0934212314','binhlv@gmaIl.com','22 YÊN BÁI, Đà Nẵng',1,2,2,'duc'),
  ('Hồ Thị Yến','1995-12-12', '999231723',14000000,'0412352315','thiyen@gMail.com','K234/11 Điện BiÊN PHỦ, GIa Lai',1,3,2,'duc'),
@@ -89,23 +91,13 @@ VALUE ('Nguyễn Văn Anh','1970-11-07', '456231786',10000000,'0901234121','anng
  ('Tòng Hoang','1982-09-03', '256781231',6000000,'0245144444','hoangtong@gmail.Com','213 Hàm Nghi, Đà Nẵng',2,4,4,'duc'),
  ('NGuyễn Công Đạo','1994-01-08', '755434343',8000000,'0988767111','nguyencongdao@gmail.com','6 Hoà Khánh, Đồng Nai',2,3,2,'duc');
  
- UPDATE `furama_minhduc`.`facility` SET `id` = '1' WHERE (`id` = '7');
-UPDATE `furama_minhduc`.`facility` SET `id` = '2' WHERE (`id` = '8');
-UPDATE `furama_minhduc`.`facility` SET `id` = '3' WHERE (`id` = '9');
-UPDATE `furama_minhduc`.`facility` SET `id` = '4' WHERE (`id` = '10');
-UPDATE `furama_minhduc`.`facility` SET `id` = '5' WHERE (`id` = '11');
-UPDATE `furama_minhduc`.`facility` SET `id` = '6' WHERE (`id` = '12');
+UPDATE `furama_minhduc_beautiful`.`facility` SET `id` = '1' WHERE (`id` = '19');
+UPDATE `furama_minhduc_beautiful`.`facility` SET `id` = '2' WHERE (`id` = '20');
+UPDATE `furama_minhduc_beautiful`.`facility` SET `id` = '3' WHERE (`id` = '21');
+UPDATE `furama_minhduc_beautiful`.`facility` SET `id` = '4' WHERE (`id` = '22');
+UPDATE `furama_minhduc_beautiful`.`facility` SET `id` = '5' WHERE (`id` = '23');
+UPDATE `furama_minhduc_beautiful`.`facility` SET `id` = '6' WHERE (`id` = '24');
 
- UPDATE `furama_minhduc`.`employee` SET `id` = '1' WHERE (`id` = '11');
-UPDATE `furama_minhduc`.`employee` SET `id` = '2' WHERE (`id` = '12');
-UPDATE `furama_minhduc`.`employee` SET `id` = '3' WHERE (`id` = '13');
-UPDATE `furama_minhduc`.`employee` SET `id` = '4' WHERE (`id` = '14');
-UPDATE `furama_minhduc`.`employee` SET `id` = '5' WHERE (`id` = '15');
-UPDATE `furama_minhduc`.`employee` SET `id` = '6' WHERE (`id` = '16');
-UPDATE `furama_minhduc`.`employee` SET `id` = '7' WHERE (`id` = '17');
-UPDATE `furama_minhduc`.`employee` SET `id` = '8' WHERE (`id` = '18');
-UPDATE `furama_minhduc`.`employee` SET `id` = '9' WHERE (`id` = '19');
-UPDATE `furama_minhduc`.`employee` SET `id` = '10' WHERE (`id` = '20');
 
 
 INSERT INTO attach_facility (name,cost, unit,status)
@@ -115,8 +107,11 @@ VALUE ('Karaoke',10000,'Giờ','Tiện nghi, hiện đại'),
       ('Buffet buổi sáng',15000,'suất','Đầy đủ đồ ăn, tráng miệng'),
       ('Buffet buổi trưa',90000,'suất','Đầy đủ đồ ăn, tráng miệng'),
       ('Buffet buổi tối',16000,'suất','Đầy đủ đồ ăn, tráng miệng');
+      
+-- INSERT INTO `furama_minhduc_beautiful`.`contract` (`id`, `deposit`, `end_date`, `start_date`, `customer`, `employee`, `facility`) VALUES ('1', '1', '1', '1', '1', '1', '1');
+
  
-INSERT INTO `furama_minhduc`.`contract` ( `start_date`,`end_date`,`deposit`,`employee_id`,`customer_id`,`facility_id`) 
+INSERT INTO `contract` ( `start_date`,`end_date`,`deposit`,`employee`,`customer`,`facility`) 
 VALUE ('2020-12-08','2020-12-08',0,3,1,3),
       ('2020-07-14','2020-07-21',200000,7,3,1),
       ('2021-03-15','2021-03-17',50000,3,4,2),
@@ -143,7 +138,10 @@ UPDATE `furama_minhduc`.`contract` SET `id` = '10' WHERE (`id` = '34');
 UPDATE `furama_minhduc`.`contract` SET `id` = '11' WHERE (`id` = '35');
 UPDATE `furama_minhduc`.`contract` SET `id` = '12' WHERE (`id` = '36');
 
- INSERT INTO `furama_minhduc`.`contract_detail` ( `quantity`,`contract_id`,`attach_facility_id`) 
+
+-- INSERT INTO `furama_minhduc_beautiful`.`contract_detail` (`quantity`, `attach_facility`, `contract`) VALUES ('1', '1', '1');
+
+ INSERT INTO `contract_detail` ( `quantity`,`contract`,`attach_facility`) 
 VALUE (5,2,4),
  (8,2,5),
  (15,2,6),
@@ -235,6 +233,8 @@ from
 
 		WHERE
            customer_id = 1
-            GROUP BY nameFacility)AS bang2 
+            GROUP BY nameFacility
+           )AS bang2 
+            -- GROUP BY nameFacility
 
 

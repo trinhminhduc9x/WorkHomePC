@@ -1,124 +1,178 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="/layout :: head">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Service</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/my-style.css">
+</head>
 <body>
-<div th:replace="~{/layout::navbar}"></div>
-<h3>facility</h3>
-<p>
-    <a th:href="@{/facility/list}">
-        Back to list
-    </a>
-</p>
-<div id="form">
-    <form th:action="@{/facility/save}" th:object="${facility}"
-          method="POST" novalidate="novalidate">
-        <input type="hidden" th:field="*{id}"/>
-        <div>
-            <label>Name</label>
-            <input type="text" th:field="*{name}"/>
-        </div>
-        <div>
-            <label>area</label>
-            <input type="number" th:field="*{area}"/>
-        </div>
-        <div>
-            <label>cost</label>
-            <input type="number" th:field="*{cost}"/>
-        </div>
-        <div>
-            <label>maxPeople</label>
-            <input type="number" th:field="*{maxPeople}"/>
-        </div>
-        <div>
-            <label>facilityType:</label>
-            <select th:field="*{facilityType}" onchange="changeForm(this)">
-                <option th:value="${''}">Chose Type..</option>
-                <option th:each="fac : ${facilityTypeList}"
-                        th:value="${fac.id}"
-                        th:text="${fac.name}"></option>
-                </option>
-            </select>
-        </div>
-        <div>
-            <label>CustomerType:</label>
-            <select th:field="*{rentType}">
-                <option th:value="${''}">Chose Type..</option>
-                <option th:each="p : ${rentTypeList}"
-                        th:value="${p.id}"
-                        th:text="${p.name}"></option>
-            </select>
-        </div>
-        <div class="mb-3" id="opt1" style="display: none">
-            <label for="standard" class="form-label fst-italic fw-bold">Room Standard:</label>
-            <select th:field="*{standardRoom}" id="standard" name="standard" class="form-select" aria-label="Default select example">
-                <option value="Normal">normal</option>
-                <option value="Vip">vip</option>
-            </select>
-        </div>
-        <div class="mb-3" id="opt2" style="display: none">
-            <label for="poolArea" class="form-label fst-italic fw-bold">Pool Area:</label>
-            <input th:field="*{poolArea}"  type="number" value="0" name="Pool" class="form-control" id="poolArea" aria-describedby="poolError">
-        </div>
+<div th:replace="layout :: header"></div>
 
 
-        <div class="mb-3" id="opt3" style="display: none">
-            <label for="floors" class="form-label fst-italic fw-bold">Number Of Floors:</label>
-            <input  th:field="*{numberOfFloors}" type="number" value="0" name="floors" class="form-control" id="floors" aria-describedby="floorError">
+<div class="container d-flex justify-content-md-center" style="margin-top: 20px">
+    <div class="row">
+        <div class="col-md-12 bg-light info">
+            <form method="post" action="/facility/create" th:object="${facilityDto}">
+                <fieldset>
+                    <legend style="text-align: center">Service Information</legend>
+                    <table>
+                        <tr>
+                            <td>Name</td>
+                            <td>
+                                <input type="text" name="name" id="name"
+                                       class="form-control"
+                                       th:field="*{name}">
+                                <div class="text-danger" th:errors="*{name}"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Area</td>
+                            <td>
+                                <input type="text" name="area" id="area"
+                                       class="form-control"
+                                       th:field="*{area}">
+                                <div class="text-danger" th:errors="*{area}"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Cost</td>
+                            <td>
+                                <input type="number" name="cost" id="cost"
+                                       class="form-control"
+                                       th:field="*{cost}">
+                                <div class="text-danger" th:errors="*{cost}"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Max people</td>
+                            <td>
+                                <input type="number" name="maxPeople"
+                                       class="form-control"
+                                       th:field="*{maxPeople}">
+                                <div class="text-danger" th:errors="*{maxPeople}"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Rental type</td>
+                            <td>
+                                <select name="rentType" id="rentType"
+                                        class="form-select"
+                                        th:field="*{rentType}">
+                                    <option th:each="rentTypeObj: ${rentType}"
+                                            th:value="${rentTypeObj.id}"
+                                            th:text="${rentTypeObj.name}"></option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Service 's Type</td>
+                            <td>
+                                <select name="facilityType" id="serviceType"
+                                        onchange="selectServiceType(this)"
+                                        class="form-select"
+                                        th:field="*{facilityType}">
+                                    <option value="">-Select Service 's Type-</option>
+                                    <option th:each="facilityTypeObj: ${facilityType}"
+                                            th:value="${facilityTypeObj.id}"
+                                            th:text="${facilityTypeObj.name}"></option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr id="standardRoom" style="display: none">
+                            <td>Standard Room</td>
+                            <td><input type="text" name="standardRoom"
+                                       class="form-control"
+                                       th:field="*{standardRoom}"></td>
+                        </tr>
+                        <tr id="descriptionOtherConvenience" style="display: none">
+                            <td>Description Other Convenience</td>
+                            <td><input type="text" name="descriptionOtherConvenience"
+                                       class="form-control"
+                                       th:field="*{descriptionOtherConvenience}"></td>
+                        </tr>
+                        <tr id="poolArea" style="display: none">
+                            <td>Pool 's Area</td>
+                            <td>
+                                <input type="text" name="poolArea"
+                                       class="form-control"
+                                       th:field="*{poolArea}">
+                            </td>
+                        </tr>
+                        <tr id="numberOfFloors" style="display: none">
+                            <td>Number of Floors</td>
+                            <td>
+                                <input type="text" name="numberOfFloors"
+                                       value=""
+                                       class="form-control"
+                                       th:field="*{numberOfFloors}">
+                                <div class="text-danger" th:errors="*{numberOfFloors}"></div>
+                            </td>
+                        </tr>
+                        <tr id="facilityFree" style="display: none">
+                            <td>Facility Free</td>
+                            <td><input type="text" name="facilityFree"
+                                       class="form-control"
+                                       th:field="*{facilityFree}"></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td><input type="submit" value="Create new Service" class=" btn-success"></td>
+                        </tr>
+                    </table>
+                </fieldset>
+            </form>
         </div>
-        <div class="mb-3" id="opt4" style="display: none">
-            <label for="otherConvenience" class="form-label fst-italic fw-bold">Description Other Convenience:</label>
-            <input  th:field="*{descriptionOtherConvenience}" type="text" name="otherConvenience" class="form-control" id="otherConvenience">
-        </div>
-
-        <div class="mb-3" id="opt5" style="display: none">
-            <label for="freeServiceIncluded" class="form-label fst-italic fw-bold">Free Service Included:</label>
-            <input  th:field="*{facilityFree}" type="text" name="convenience" class="form-control" id="freeServiceIncluded">
-        </div>
-
-
-        <input type="submit" value="Save"/>
-    </form>
+    </div>
 </div>
-<footer th:replace="/layout :: footer"></footer>
+
 <script>
-    // <%--    thêm value cho thẻ --%>
-    function getIdToDelete(id, name) {
-        document.getElementById("idDelete").value = id;
-        document.getElementById("nameDelete").value = name;
-    }
-    function changeForm(type) {
-        let choseType = type.value;
-        switch (choseType) {
+    function selectServiceType(type) {
+        let selectType = type.value;
+        switch (selectType) {
             case "1":
-                document.getElementById("opt1").style.display = "block";
-                document.getElementById("opt2").style.display = "block";
-                document.getElementById("opt3").style.display = "block";
-                document.getElementById("opt4").style.display = "block";
-                document.getElementById("opt5").style.display = "none";
+                document.getElementById("standardRoom").style.display = "table-row";
+                document.getElementById("descriptionOtherConvenience").style.display = "table-row";
+                document.getElementById("poolArea").style.display = "table-row";
+                document.getElementById("numberOfFloors").style.display = "table-row";
+                document.getElementById("facilityFree").style.display = "none";
+
+                $('#facilityFree').val("");
                 break;
             case "2":
-                document.getElementById("opt1").style.display = "none";
-                document.getElementById("opt2").style.display = "none";
-                document.getElementById("opt3").style.display = "none";
-                document.getElementById("opt4").style.display = "none";
-                document.getElementById("opt5").style.display = "block";
+                document.getElementById("standardRoom").style.display = "table-row";
+                document.getElementById("descriptionOtherConvenience").style.display = "table-row";
+                document.getElementById("poolArea").style.display = "none";
+                document.getElementById("numberOfFloors").style.display = "table-row";
+                document.getElementById("facilityFree").style.display = "none";
+
+                $('#poolArea').val(0);
+                $('#facilityFree').val("");
                 break;
             case "3":
-                document.getElementById("opt1").style.display = "block";
-                document.getElementById("opt2").style.display = "block";
-                document.getElementById("opt3").style.display = "none";
-                document.getElementById("opt4").style.display = "block";
-                document.getElementById("opt5").style.display = "none";
+                document.getElementById("standardRoom").style.display = "none";
+                document.getElementById("descriptionOtherConvenience").style.display = "none";
+                document.getElementById("poolArea").style.display = "none";
+                document.getElementById("numberOfFloors").style.display = "none";
+                document.getElementById("facilityFree").style.display = "table-row";
+
+                $('#standardRoom').val("");
+                $('#descriptionOtherConvenience').val("");
+                $('#poolArea').val(0);
+                $('#numberOfFloors').val(0);
                 break;
             default:
-                document.getElementById("opt1").style.display = "block";
-                document.getElementById("opt2").style.display = "block";
-                document.getElementById("opt3").style.display = "block";
-                document.getElementById("opt4").style.display = "block";
-                document.getElementById("opt5").style.display = "block";
-
+                document.getElementById("standardRoom").style.display = "none";
+                document.getElementById("descriptionOtherConvenience").style.display = "none";
+                document.getElementById("poolArea").style.display = "none";
+                document.getElementById("numberOfFloors").style.display = "none";
+                document.getElementById("facilityFree").style.display = "none";
         }
     }
 </script>
+
+<div th:replace="layout :: footer"></div>
+<script src="/js/jquery-3.6.0.min.js"></script>
+<script src="/js/bootstrap.js"></script>
 </body>
 </html>

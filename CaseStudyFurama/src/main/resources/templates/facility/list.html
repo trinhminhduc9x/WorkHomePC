@@ -1,221 +1,313 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="/layout :: head">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Service</title>
+    <link rel="shortcut icon"
+          href="https://furamavietnam.com/wp-content/uploads/2018/07/favicon.png"
+          type="image/x-icon">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/my-style.css">
 </head>
 <body>
-<div th:replace="~{/layout::navbar}"></div>
-<h3 style="text-align: center">facility</h3>
+<div th:replace="layout :: header"></div>
 
-<p>
-    <a th:href="@{/facility/create}">
-        <input class="m-3 btn btn-danger" type="submit" value=" Add ">
-    </a>
-</p>
 
-<form action="/facility/list" method="get">
-    <tr>
-        <input class="form-control me-2 w-25 " type="text" placeholder="Name"
-               name="name" aria-label="Search" th:value="${name}">
-        <button class="btn btn-success" type="submit">Search</button>
-    </tr>
-    <tr>
-        <form>
-            <label>CustomerType:</label>
-            <select name="FacilityTypeID">
-                <option value="" selected>Choose Something</option>
-                <option th:each="p : ${facilityTypeList}"
-                        th:value="${p.id}"
-                        th:text="${p.name}"></option>
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <a href="/facility/create" class="btn btn-success">Add new Service</a>
+        </div>
+        <div class="col-md-3">
+            <select name="facilityTypeSelect"
+                    id="facilityTypeSelect"
+                    class="form-select bg-transparent text-light"
+                    onchange="getVal(this);">
+                <option th:value="0" class="text-dark">Select Facility Type</option>
+                <option th:value="0" class="text-dark">All Facility Type</option>
+                <option th:each="facilityTypeObj: ${facilityType}"
+                        th:value="${facilityTypeObj.id}"
+                        th:text="${facilityTypeObj.name}"
+                        class="text-dark">
+                </option>
             </select>
-            <button class="btn btn-success" type="submit">Search</button>
-        </form>
-    </tr>
-</form>
-
-<a th:href="@{/facility/list(sort='name', name=${name})}" class="btn btn-success" type="submit">
-    Sort By Name</a>
-
-
-<table id="tableMinhDuc">
-    <thead>
-    <tr>
-        <th>ID</th>
-        <th>Name</th>
-        <th>area</th>
-        <th>cost</th>
-        <th>maxPeople</th>
-        <th>standardRoom</th>
-        <th>descriptionOtherConvenience</th>
-        <th>poolArea</th>
-        <th>numberOfFloors</th>
-        <th>facilityFree</th>
-        <th>rentType</th>
-        <th>facilityType</th>
-        <th>Edit</th>
-        <th>Delete</th>
-        <th>View</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="facility,loop : ${facilityPage}">
-        <td th:text="${facility.id}"></td>
-        <td th:text="${facility.name}"></td>
-        <td th:text="${facility.area}"></td>
-        <td th:text="${facility.cost}"></td>
-        <td th:text="${facility.maxPeople}"></td>
-        <td th:text="${facility.standardRoom}"></td>
-        <td th:text="${facility.descriptionOtherConvenience}"></td>
-        <td th:text="${facility.poolArea}"></td>
-        <td th:text="${facility.numberOfFloors}"></td>
-        <td th:text="${facility.facilityFree}"></td>
-        <td th:text="${facility.rentType.name}"></td>
-        <td th:text="${facility.facilityType.name}"></td>
-
-
-
-        <!-- EDIT -->
-        <td><a th:href="@{/facility/{id}/edit(id=${facility.id})}">
-            <buton class="btn btn-success">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                     class="bi bi-pencil" viewBox="0 0 16 16">
-                    <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
-                </svg>
-            </buton>
-        </a></td>
-
-        <td>
-            <!-- DELETE -->
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#deleteModal"
-                    th:attr="onclick=|getIdToDelete('${facility.id}','${facility.name}')|">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                     class="bi bi-trash" viewBox="0 0 16 16">
-                    <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
-                    <path fill-rule="evenodd"
-                          d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
-                </svg>
-            </button>
-        </td>
-
-
-        <td>
-            <!-- VIEW -->
-            <button th:attr="onclick=|infoToDetail('${facility.id}','${facility.name}','${facility.descriptionOtherConvenience}','${facility.facilityType.name}')|"
-                    class="btn btn-warning"
-                    type="button" data-bs-toggle="modal" data-bs-target="#detailModal">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search"
-                     viewBox="0 0 16 16">
-                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-                </svg>
-            </button>
-        </td>
-    </tr>
-
-
-
-
-
-    </tbody>
-</table>
-
-<!-- Modal Delete-->
-<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-     aria-hidden="true">
-    <div class="modal-dialog">
-        <form action="/facility/delete" method="get">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h2 class="modal-title text-danger" id="exampleModalLabel">customer</h2>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                            aria-label="Close"></button>
+        </div>
+        <div class="col-md-6 d-flex justify-content-end">
+            <nav>
+                <div class="container-fluid">
+                    <form action="/facility/list" method="post" class="d-flex">
+                        <input class="form-control me-2" type="search"
+                               placeholder="Search"
+                               aria-label="Search"
+                               name="searchName">
+                        <button class="btn btn-outline-success btn-light" type="submit"><strong>Search</strong></button>
+                    </form>
                 </div>
-                <div class="modal-body ">
-                    <b>ID :</b>
-                    <input type="hidden" readonly name="id" id="idDelete" class="form-control"><br>
-                    <b>Name :</b>
-                    <input type="text" readonly name="name" id="nameDelete" class="form-control"><br>
-                    <h3 class="text-danger">Are you sure want delete </h3>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary" value="delete">Yes</button>
-                </div>
-            </div>
-        </form>
+            </nav>
+        </div>
     </div>
 </div>
 
-
-<!-- Modal view-->
-<div class="modal fade" id="detailModal" tabindex="-1" aria-labelledby="exampleModalLabel1"
-     aria-hidden="true">
-    <div class="modal-dialog">
-        <form>
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h2 class="modal-title text-danger" id="exampleModalLabel1">Blog</h2>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                            aria-label="Close"></button>
-                </div>
-                <div class="modal-body ">
-                    <b>ID :</b>
-                    <input type="text" readonly name="id" id="detailId" class="form-control"><br>
-                    <b>Name :</b>
-                    <input type="text" readonly name="name" id="detailName" class="form-control"><br>
-                    <b>DescriptionOtherConvenience :</b>
-                    <input type="text" readonly name="name" id="detailDescriptionOtherConvenience"
-                           class="form-control"><br>
-                    <b>FacilityType :</b>
-                    <input type="text" readonly name="name" id="detailFacilityType" class="form-control"><br>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </form>
+<div class="container-fluid" style="margin-top: 20px">
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table">
+                <thead>
+                <tr class="table-dark">
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Area</th>
+                    <th scope="col">Cost</th>
+                    <th scope="col">Max people</th>
+                    <th scope="col">Rental Type</th>
+                    <th scope="col">Facility Type</th>
+                    <th scope="col" style="text-align: right">Action</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr class="table-light" th:each="facility, loop: ${facilities}">
+                    <th scope="row" th:text="${loop.count}">count</th>
+                    <td>
+                        <!-- Button trigger modal -->
+                        <a type="button" data-bs-toggle="modal"
+                                data-bs-target="#detailModal"
+                                class="text-primary"
+                                th:text="${facility.name}"
+                                th:attr="onclick=|showDetail('${facility.id}')|">
+                        </a>
+                    </td>
+                    <td th:text="${facility.area}">area</td>
+                    <td th:text="${facility.cost}">cost</td>
+                    <td th:text="${facility.maxPeople}">maxPeople</td>
+                    <td th:text="${facility.rentType.name}">rentTypeName</td>
+                    <td th:text="${facility.facilityType.name}">facilityTypeName</td>
+                    <td>
+                        <!-- Button trigger modal -->
+                        <button type="button"
+                                class="btn">
+                            <a th:href="@{/facility/update/{id}(id=${facility.id})}">
+                                <img src="/img/edit-2.png"
+                                     style="height: 25px;width: auto">
+                            </a>
+                        </button>
+                    </td>
+                    <td class="btn-delete">
+                        <!-- Button trigger modal -->
+                        <button type="button"
+                                class="btn"
+                                data-bs-toggle="modal"
+                                data-bs-target="#deleteButton"
+                                th:attr="onclick=|showModalDelete('${facility.id}','${facility.name}')|" >
+                            <img src="/img/delete.png"
+                                 style="height: 25px;width: auto">
+                        </button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
 
-<!-- Phan Trang -->
-<div class="d-flex justify-content-end ">
+<nav aria-label="Page navigation example">
     <ul class="pagination">
-        <li class="page-item disabled" th:if="${facilityPage.number == 0}">
-            <a class="page-link" href="">Previous</a>
-        </li>
-        <li class="page-item" th:if="${facilityPage.number > 0}">
+        <li class="page-item">
             <a class="page-link"
-               th:href="@{/facility/list(page=${facilityPage.number - 1}, sort=${sortValue}, name=${name})}">Previous</a>
+               th:href="@{/facility/list(page=${facilities.number - 1}, facilityTypeSelect=${facilityTypeSelect})}"
+               th:if="${facilities.hasPrevious()}"
+               aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+            </a>
+            <span th:unless="${facilities.hasPrevious()}">
+                <a class="page-link">&laquo;</a>
+            </span>
         </li>
-        <li class="page-item disabled">
-            <a class="page-link" href=""><span th:text="${facilityPage.number + 1}"></span> / <span
-                    th:text="${facilityPage.totalPages}"></span></a>
+        <li class="btn btn-light">
+            <span th:text="${facilities.number + 1}"></span>
+            /
+            <span th:text="${facilities.totalPages}"></span>
         </li>
-        <li class="page-item disabled" th:if="${facilityPage.number >= facilityPage.totalPages - 1}">
-            <a class="page-link" href="">Next</a>
-        </li>
-        <li class="page-item" th:if="${facilityPage.number < facilityPage.totalPages - 1}">
+        <li class="page-item">
             <a class="page-link"
-               th:href="@{/facility/list(page=${facilityPage.number + 1}, sort=${sortValue}, name=${name})}">Next</a>
+               th:href="@{/facility/list(page=${facilities.number + 1}, facilityTypeSelect=${facilityTypeSelect})}"
+               th:if="${facilities.hasNext()}"
+               aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+            </a>
+            <span th:unless="${facilities.hasNext()}">
+                <a class="page-link">&raquo;</a>
+            </span>
         </li>
     </ul>
+</nav>
+
+<!--modal delete-->
+<div class="modal fade" id="deleteButton" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <form action="/facility/remove" method="post">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteModalLabel">Deleting</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Delete <span class="fw-bold text-danger" id="removeName"></span>?
+                    <input type="hidden" id="removeId" name="removeId">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">&#10006;</button>
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </div>
+            </div>
+        </form>
+    </div>
 </div>
 
+<!--call modal notice-->
+<input type="hidden" id="noticeMsgModal" th:value="${msg}">
+<!-- Modal notice -->
+<div class="modal fade" id="noticeMsg" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content rounded-3 shadow">
+            <div class="modal-header">
+                <h5 class="modal-title">Furama 's notice</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <span th:text="${msg}"></span>
+                <img src="https://media0.giphy.com/media/AWIm1O6FjmCtsI2Pru/giphy.gif?cid=790b7611e14412e5147aee187464a8df9dfeea3085950a9a&rid=giphy.gif&ct=s"
+                     style="width: 35px; height: auto"
+                     alt="">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" data-bs-dismiss="modal">&#10004;</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- detail Modal -->
+<div class="modal fade" id="detailModal" tabindex="-1" aria-labelledby="detailModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="detailModalLabel">Facility Detail</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <span id="detailFacility"></span>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:replace="layout :: footer"></div>
+<script src="/js/jquery-3.6.0.min.js"></script>
+<script src="/js/bootstrap.js"></script>
 <script>
-    // <%--    thêm value cho thẻ delete--%>
-    function getIdToDelete(id, name) {
-        document.getElementById("idDelete").value = id;
-        document.getElementById("nameDelete").value = name;
+    function showModalDelete(deleteId, deleteName) {
+        $("#removeName").text(deleteName);
+        $("#removeId").val(deleteId);
     }
 
-    // <%--    thêm value cho thẻ view--%>
-    function infoToDetail(id, name, DescriptionOtherConvenience, FacilityType) {
-        document.getElementById("detailId").value = id;
-        document.getElementById("detailName").value = name;
-        document.getElementById("detailDescriptionOtherConvenience").value = DescriptionOtherConvenience;
-        document.getElementById("detailFacilityType").value = FacilityType;
+    function getVal(typeSelect){
+        window.location = "/facility/list?facilityTypeSelect=" + typeSelect.value;
+    }
+
+    window.onload = function () {
+        let msg = $("#noticeMsgModal").val();
+        if (msg != null && msg !== "") {
+            $(document).ready(function () {
+                $("#noticeMsg").modal("show");
+            });
+        }
+    }
+
+    function showDetail(facilityId){
+        $.ajax({
+            type: "GET",
+            url: "http://localhost:8080/facility/" + facilityId,
+            success: function (facility) {
+                console.log(facility);
+                let htmlStr = "";
+                htmlStr += `<table>
+                    <tr>
+                        <td>Name</td>
+                        <td>: ${facility.name}</td>
+                    </tr>
+                    <tr>
+                        <td>Area</td>
+                        <td>: ${facility.area}</td>
+                    </tr>
+                    <tr>
+                        <td>Cost</td>
+                        <td>: ${facility.cost}</td>
+                    </tr>
+                    <tr>
+                        <td>Max people</td>
+                        <td>: ${facility.maxPeople}</td>
+                    </tr>
+                    <tr>
+                        <td>Rent Type</td>
+                        <td>: ${facility.rentType.name}</td>
+                    </tr>
+                    <tr>
+                        <td>Facility Type</td>
+                        <td>: ${facility.facilityType.name}</td>
+                    </tr>`;
+                if (facility.facilityType.id==1){
+                    htmlStr += `
+                    <tr>
+                            <td>Standard Room</td>
+                            <td>: ${facility.standardRoom}</td>
+                        </tr>
+                        <tr>
+                            <td>Description Other Convenience</td>
+                            <td>: ${facility.descriptionOtherConvenience}</td>
+                        </tr>
+                        <tr>
+                            <td>Pool 's Area</td>
+                            <td>: ${facility.poolArea}</td>
+                        </tr>
+                        <tr>
+                            <td>Number of Floors</td>
+                            <td>: ${facility.numberOfFloors}</td>
+                        </tr>`;
+                }
+                else if (facility.facilityType.id==2){
+                    htmlStr += `
+                    <tr>
+                            <td>Standard Room</td>
+                            <td>: ${facility.standardRoom}</td>
+                        </tr>
+                        <tr>
+                            <td>Description Other Convenience</td>
+                            <td>: ${facility.descriptionOtherConvenience}</td>
+                        </tr>
+                        <tr>
+                            <td>Number of Floors</td>
+                            <td>: ${facility.numberOfFloors}</td>
+                        </tr>`;
+                }
+                else if (facility.facilityType.id==3){
+                    htmlStr += `
+                        <tr>
+                            <td>Facility Free</td>
+                            <td>: ${facility.facilityFree}</td>
+                        </tr>`;
+                }
+                htmlStr += `</table>`;
+                $('#detailFacility').html(htmlStr);
+            },
+            error: function (resultError) {
+                alert("error");
+            }
+        });
     }
 </script>
-
-
-<footer th:replace="/layout :: footer"></footer>
 </body>
 </html>
