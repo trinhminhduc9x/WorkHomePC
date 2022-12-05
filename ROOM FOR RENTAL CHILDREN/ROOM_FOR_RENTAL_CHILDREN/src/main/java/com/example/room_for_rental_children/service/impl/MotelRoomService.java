@@ -27,4 +27,9 @@ public class MotelRoomService implements IMotelRoomService {
     public Page<MotelRoom> findPageSearchAll(Pageable pageable, String dateStart, String dateEnd) {
         return motelRoomRepository.findPageSearchAll(pageable,dateStart,dateEnd);
     }
+
+    @Override
+    public void remove(Integer id) {
+        motelRoomRepository.deleteById(id);
+    }
 }

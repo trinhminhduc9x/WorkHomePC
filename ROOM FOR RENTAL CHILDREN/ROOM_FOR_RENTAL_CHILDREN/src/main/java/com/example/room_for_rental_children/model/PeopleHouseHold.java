@@ -17,11 +17,11 @@ public class PeopleHouseHold {
 
     private String nameWife;
 
-    @OneToMany(mappedBy = "peopleHouseHold",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "peopleHouseHold",cascade = CascadeType.REMOVE)
 //    @JsonBackReference
     private List<ChildHouseHold> childHouseHoldList;
 
-    @OneToMany(mappedBy = "peopleHouseHold",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "peopleHouseHold",cascade = CascadeType.REMOVE)
     @JsonBackReference
     private List<MotelRoom> motelRoomList;
 

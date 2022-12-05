@@ -11,7 +11,7 @@ public class PayMony {
     private String name;
     private Integer payMony;
 
-    @OneToMany(mappedBy = "payMony",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "payMony",cascade = CascadeType.REMOVE)
     private List<MotelRoom>motelRoomList;
 
     public PayMony() {
