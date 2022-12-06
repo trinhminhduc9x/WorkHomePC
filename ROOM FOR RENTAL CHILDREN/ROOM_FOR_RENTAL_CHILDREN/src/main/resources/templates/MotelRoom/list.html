@@ -1,11 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns:th="http://www.thymeleaf.org">
-<head>
+<head th:replace="/layout :: head">
     <meta charset="UTF-8">
-    <title>Room</title>
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/my-style.css">
-    <script src="../jquery-3.6.1.min.js"></script>
+    <title></title>
 </head>
 <body>
 <div th:replace="layout :: header"></div>
@@ -55,10 +52,10 @@
 <!--bắt đầu code tìm kím và thêm mới -->
 <div class="container">
     <div class="row">
-<!--        &lt;!&ndash;thêm mới đối tượng đang có&ndash;&gt;-->
-<!--        <div class="col-md-3">-->
-<!--            <a href="/hoKhau/create" class="btn btn-success">Add new customer</a>-->
-<!--        </div>-->
+        <!--        &lt;!&ndash;thêm mới đối tượng đang có&ndash;&gt;-->
+        <!--        <div class="col-md-3">-->
+        <!--            <a href="/hoKhau/create" class="btn btn-success">Add new customer</a>-->
+        <!--        </div>-->
         <!--tìm kím đối tượng đang có theo 2 trường-->
         <div class="col-md-3"></div>
         <div class="col-md-6 d-flex justify-content-end">
@@ -107,17 +104,13 @@
                     <th scope="col">Xem thành viên</th>
 
 
-
-
-<!--                    &lt;!&ndash; nút delete tổng các đối tượng được đánh dấu &ndash;&gt;-->
-<!--                    <th scope="col">-->
-<!--                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"-->
-<!--                                data-bs-target="#deleteModal"-->
-<!--                                th:attr="onclick=|stringArr()|"> DELETE ALL-->
-<!--                        </button>-->
-<!--                    </th>-->
-
-
+                    <!--                    &lt;!&ndash; nút delete tổng các đối tượng được đánh dấu &ndash;&gt;-->
+                    <!--                    <th scope="col">-->
+                    <!--                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"-->
+                    <!--                                data-bs-target="#deleteModal"-->
+                    <!--                                th:attr="onclick=|stringArr()|"> DELETE ALL-->
+                    <!--                        </button>-->
+                    <!--                    </th>-->
 
 
                     <th scope="col" style="text-align: center">Edit</th>
@@ -135,7 +128,7 @@
                     <td th:text="${iteam.note}"></td>
                     <td th:text="${iteam.payMony.name}"></td>
                     <td th:text="${iteam.payMony.payMony}"></td>
-<!--                    &lt;!&ndash;  nút xem tổng số thành viên hiện có&ndash;&gt;-->
+                    <!--                    &lt;!&ndash;  nút xem tổng số thành viên hiện có&ndash;&gt;-->
                     <td>
                         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#view"
                                 th:attr="onclick=|infoToModal('${iteam.peopleHouseHold.id}')|">
@@ -144,19 +137,16 @@
                     </td>
 
 
-
-<!--                    &lt;!&ndash;nút đánh dấu các thành viên cần được xóa&ndash;&gt;-->
-<!--                    <td>-->
-<!--                        <div class="form-check">-->
-<!--                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"-->
-<!--                                   th:attr="onclick=|getIdToDelete('${hoKhau.id}')|">-->
-<!--                            <label class="form-check-label" for="flexCheckDefault">-->
-<!--                                DELETE-->
-<!--                            </label>-->
-<!--                        </div>-->
-<!--                    </td>-->
-
-
+                    <!--                    &lt;!&ndash;nút đánh dấu các thành viên cần được xóa&ndash;&gt;-->
+                    <!--                    <td>-->
+                    <!--                        <div class="form-check">-->
+                    <!--                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"-->
+                    <!--                                   th:attr="onclick=|getIdToDelete('${hoKhau.id}')|">-->
+                    <!--                            <label class="form-check-label" for="flexCheckDefault">-->
+                    <!--                                DELETE-->
+                    <!--                            </label>-->
+                    <!--                        </div>-->
+                    <!--                    </td>-->
 
 
                     <!-- nút edit -->
@@ -187,7 +177,6 @@
 </div>
 
 
-
 <!-- Phan Trang -->
 <div class="d-flex justify-content-end ">
     <ul class="pagination">
@@ -211,7 +200,6 @@
         </li>
     </ul>
 </div>
-
 
 
 <!--modal delete-->
@@ -238,10 +226,8 @@
 </div>
 
 
-
 <!--call modal notice-->
 <input type="hidden" id="noticeMsgModal" th:value="${msg}">
-
 
 
 <!-- Modal notice -->
@@ -264,7 +250,6 @@
         </div>
     </div>
 </div>
-
 
 
 <!--&lt;!&ndash; Modal Delete tất cả đối tượng &ndash;&gt;-->
@@ -292,23 +277,47 @@
 <!--</div>-->
 
 
-
 <!-- Modal xem chi tiết từng đối tượng-->
 <div class="modal fade " id="view" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
      style="color: #0000ff">
     <div class="modal-dialog ">
         <div class="modal-content bg-white">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel1">tên thành viên</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <h5 class="modal-title" id="exampleModalLabel1">Bảng chi tiết</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
-            <div class="modal-body" id="table">
-                <!-- hien thi cac gia tri-->
+            <div class="modal-body">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">Tên chủ hộ</th>
+                        <th scope="col">Tên Hôn Thê</th>
+                    </tr>
+                    </thead>
+                    <tbody id="myBodyPeople">
+                    <!-- hien thi cac gia tri-->
+                    <tr>
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th scope="col">STT</th>
+                                <th scope="col">Tên các con</th>
+                            </tr>
+                            </thead>
+                            <tbody id="myBodyChild">
+                            <!-- hien thi cac gia tri-->
+                            </tbody>
+                        </table>
+                    </tr>
+
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
 </div>
-
 
 
 <!--script delete-->
@@ -355,12 +364,54 @@
         }
     }
 </script>
+
+
 <!-- ajac-->
+
+
+<!--<script>-->
+<!--    // <%&#45;&#45;    thêm đối tượng hiển để thị chi tiết tường đối tượng bằng ajac&#45;&#45;%>-->
+<!--    function infoToModal(id) {-->
+<!--        $("#myBody").empty();-->
+<!--        console.log(id)-->
+<!--        $.ajax({-->
+<!--            url: "http://localhost:8080/rest/listPeopleViewId/" + id,-->
+<!--            type: "GET",-->
+<!--            contentType: "application/json; charset =utf-8",-->
+<!--            dataType: "json",-->
+<!--            success: function (data) {-->
+<!--                console.log(data);-->
+<!--                let tr = [];-->
+<!--                console.log(tr.length);-->
+<!--                // tr.push("hello");-->
+<!--                console.log(tr.toString());-->
+<!--                // for (let i = 0; i <data.length ; i++) {-->
+<!--                //     tr.push("<tr>");-->
+<!--                //     tr.push("<td>" + data[i].name + "</td>");-->
+<!--                //     tr.push("<td>" + data[i].nameWife + "</td>");-->
+<!--                //     tr.push("<td>" + data[i].childHouseHoldList.name + "</td>");-->
+<!--                //     tr.push("</tr>");-->
+<!--                // }-->
+<!--                    tr.push("<tr>");-->
+<!--                    tr.push("<td>" + data.name + "</td>");-->
+<!--                    tr.push("<td>" + data.nameWife + "</td>");-->
+<!--                for (let i = 0; i < data.childHouseHoldList.length; i++) {-->
+<!--                    tr.push("<td>" + "Tên con "+ i + "</td>");-->
+<!--                    tr.push("<td>" + data.childHouseHoldList[i].name + "</td>");-->
+<!--                }-->
+<!--                    tr.push("</tr>");-->
+<!--                console.log(tr.length);-->
+<!--                $("#myBody").append(tr.join(""));-->
+<!--            }-->
+<!--        })-->
+<!--    }-->
+<!--</script>-->
+
 <script>
     // <%--    thêm đối tượng hiển để thị chi tiết tường đối tượng bằng ajac--%>
     function infoToModal(id) {
-        $("#table").empty();
-        console.log(id)
+        console.log(id);
+        $("#myBodyPeople").empty();
         $.ajax({
             url: "http://localhost:8080/rest/listPeopleViewId/" + id,
             type: "GET",
@@ -368,16 +419,35 @@
             dataType: "json",
             success: function (data) {
                 console.log(data)
-                let tr = [];
-                tr.push("<tr><td> Tên chủ hộ </td><td> Tên Hôn Thê </td><td> Tên các con </td></tr>");
-                for (let i = 0; i < data.length; i++) {
-                    tr.push("<tr>")
-                    tr.push("<td>" + data[i].name + "</td>")
-                    tr.push("<td>" + data[i].nameWife + "</td>")
-                    tr.push("<td>" + data[i].childHouseHoldList.name + "</td>")
-                    tr.push("</tr>")
+                let myTableShow = "";
+                myTableShow +=
+                    `
+                            <tr>
+                             <td>${data.name}</td>
+                              <td>${data.nameWife}</td>
+                            </tr>
+                            `
+                let myTableChild = "";
+                for (let i = 0; i < data.childHouseHoldList.length; i++) {
+                    myTableChild +=
+                        `
+                            <tr>
+                              <th scope="row " class="text-danger">${i + 1}</th>
+                              <td>${data.childHouseHoldList[i].name}</td>
+                            </tr>
+                            `
                 }
-                $("#table").append(tr.join(""));
+                if (myTableChild.length==0){
+                    myTableChild +=
+                        `
+                            <tr>
+                              <td>"gia đình chưa sinh con"</td>
+                            </tr>
+                            `
+                }
+                $("#myBodyChild").empty();
+                $("#myBodyPeople").append(myTableShow);
+                $("#myBodyChild").append(myTableChild);
             }
         })
     }
@@ -386,7 +456,5 @@
 <div th:replace="layout :: footer"></div>
 
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script src="/js/bootstrap.js"></script>
 </body>
 </html>

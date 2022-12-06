@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
+<head th:fragment="head">
     <meta charset="UTF-8">
     <title>Minh Đức</title>
-    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../static/css/my-style.css">
     <link rel="stylesheet" href="/css/my-style.css">
+    <script src="/js/bootstrap.js"></script>
 </head>
 <body>
 
@@ -45,13 +44,17 @@
 </header>
 
 <div th:fragment="footer" style="font-size: 14px">
-        <div class="text-center p-1" style="background-color: rgba(0, 0, 0, 0.2)">
-            &copy; minh duc
-        </div>
+    <div class="text-center p-1" style="background-color: rgba(0, 0, 0, 0.2)">
+        &copy; minh duc
+    </div>
     </footer>
+    <!--    <script src="jquery-3.6.1.min.js"></script>-->
+    <script
+            src="https://code.jquery.com/jquery-3.6.1.js"
+            integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
+            crossorigin="anonymous"></script>
+    <script src="/js/bootstrap.js"></script>
 </div>
 
-<script src="../static/js/bootstrap.js"></script>
-<script src="/js/bootstrap.js"></script>
 </body>
 </html>
