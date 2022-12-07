@@ -1,75 +1,104 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
+<head th:replace="/layout :: head">
     <meta charset="UTF-8">
-    <title>Customer</title>
+    <title></title>
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/my-style.css">
 </head>
 <body>
 <div th:replace="layout :: header"></div>
 
-
-
 <div class="container d-flex justify-content-md-center mb-5" style="margin-top: 20px">
     <div class="row">
         <div class="col-md-12 bg-light info">
-            <form action="/hoKhau/create" method="post" th:object="${soHoKhauDto}">
+            <form action="/motelRoom/create" method="post" th:object="${motelRoom}">
                 <fieldset>
-                    <legend style="text-align: center">Customer Information</legend>
+                    <legend style="text-align: center"></legend>
                     <table>
                         <tr>
-                            <td>Name
+                            <td>Tên Chủ Hộ
                             </td>
                             <td>
-                                <input type="text" name="maHoKhau" id="maHoKhau"
+                                <input type="text" name="tenChuHo" id="tenChuHo"
                                        class="form-control"
                                        title="Input cho dung' hi?"
-                                       th:field="*{maHoKhau}">
-                                <div class="text-danger" th:errors="*{maHoKhau}"></div>
+                                       th:field="*{peopleHouseHold.name}">
+                                <div class="text-danger" th:errors="*{peopleHouseHold.name}"></div>
                             </td>
                         </tr>
                         <tr>
-                            <td>name
+                            <td>Tên Hôn Thê
                             </td>
                             <td>
-                                <input type="text" name="name" id="name" class="form-control"
-                                       th:field="*{name}">
-                                <div class="text-danger" th:errors="*{name}"></div>
+                                <input type="text" name="tenHonThe" id="tenHonThe"
+                                       class="form-control"
+                                       title="Input cho dung' hi?"
+                                       th:field="*{peopleHouseHold.nameWife}">
+                                <div class="text-danger" th:errors="*{peopleHouseHold.nameWife}"></div>
                             </td>
                         </tr>
                         <tr>
-                            <td>Identify Card
+                            <td>ngày bắt đầu hợp đồng
                             </td>
                             <td>
-                                <input type="number" name="numberPeople" class="form-control"
-                                       th:field="*{numberPeople}">
-                                <div class="text-danger" th:errors="*{numberPeople}"></div>
+                                <input type="date" name="startDate" id="startDate" class="form-control"
+                                       th:field="*{dateStart}">
+                                <div class="text-danger" th:errors="*{dateStart}"></div>
                             </td>
                         </tr>
                         <tr>
-                            <td>dayStar
+                            <td>ngày kết thúc hợp đồng
                             </td>
                             <td>
-                                <input type="date" name="phoneNumber" class="form-control"
-                                       th:field="*{dayStar}">
-                                <div class="text-danger" th:errors="*{dayStar}"></div>
+                                <input type="date" name="endtDate" id="endtDate" class="form-control"
+                                       th:field="*{dateEnd}">
+                                <div class="text-danger" th:errors="*{dateEnd}"></div>
                             </td>
                         </tr>
-
                         <tr>
-                            <td>Address
+                            <td>note
                             </td>
                             <td>
-                                <input type="text" name="address" class="form-control"
-                                       th:field="*{address}">
-                                <div class="text-danger" th:errors="*{address}"></div>
+                                <input type="text" name="note" class="form-control"
+                                       th:field="*{note}">
+                                <div class="text-danger" th:errors="*{note}"></div>
                             </td>
                         </tr>
+                        <tr>
+                            <td>số điện thoại
+                            </td>
+                            <td>
+                                <input type="number" name="phoneNumber" class="form-control"
+                                       th:field="*{phoneNumber}">
+                                <div class="text-danger" th:errors="*{phoneNumber}"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                kiểu thanh toán:
+                            </td>
+                           <td>
+                               <select th:field="*{payMony}">
+                                   <option th:each="p : ${payList}"
+                                           th:value="${p.id}"
+                                           th:text="${p.name}"></option>
+                               </select>
+                           </td>
+                        </tr>
+<!--                        <tr>-->
+<!--                            <td>Address-->
+<!--                            </td>-->
+<!--                            <td>-->
+<!--                                <input type="text" name="address" class="form-control"-->
+<!--                                       th:field="*{address}">-->
+<!--                                <div class="text-danger" th:errors="*{address}"></div>-->
+<!--                            </td>-->
+<!--                        </tr>-->
 
                         <tr>
                             <td><input type="reset" value="Clear"></td>
-                            <td><input type="submit" value="Create new Customer" class=" btn-success"></td>
+                            <td><input type="submit" value="submit" class=" btn-success"></td>
                         </tr>
                     </table>
                 </fieldset>
@@ -81,19 +110,11 @@
 <div th:replace="layout :: footer"></div>
 
 
-<script src="/js/jquery-3.6.0.min.js"></script>
-
-
-
-<script src="/js/bootstrap.js"></script>
-
-
 <script>
     $(function (){
        $("#name").title();
     });
 </script>
-
 
 </body>
 </html>

@@ -20,4 +20,10 @@ public class PeopleHouseHoldService implements IPeopleHouseHoldService {
     public PeopleHouseHold FindById(Integer id) {
         return repostory.findById(id).orElse(new PeopleHouseHold());
     }
+
+    @Override
+    public void save(PeopleHouseHold peopleHouseHold) {
+        repostory.save(peopleHouseHold);
+    }
+
 }

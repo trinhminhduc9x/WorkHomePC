@@ -15,4 +15,9 @@ public class ChildService implements IChildService {
     public List<ChildHouseHold> FindListAll() {
         return repository.findAll();
     }
+
+    @Override
+    public void save(ChildHouseHold childHouseHold) {
+        repository.save(childHouseHold);
+    }
 }

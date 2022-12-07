@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface IChildService {
     List<ChildHouseHold>FindListAll();
+    void save(ChildHouseHold childHouseHold);
 }
