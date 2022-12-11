@@ -27,13 +27,9 @@ public class Customer {
     private String dateOfBirth;
 
     private String gender;
-
     private String idCard;
-
     private String phoneNumber;
-
     private String email;
-
     private String address;
 
     @ManyToOne()
