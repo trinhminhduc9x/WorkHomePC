@@ -45,8 +45,8 @@
                             <!--tìm kím đối tượng đang có theo number-->
                             <tr>
                                 <select name="CustomerTypeID">
-                                    <option value="">Loại Khách Hàng</option>
-                                    <option name="" th:each="p : ${CustomerTypeList}"
+                                    <option th:value="${CustomerTypeID}">Loại Khách Hàng</option>
+                                    <option name="" th:each="p : ${customerTypes}"
                                             th:value="${p.id}"
                                             th:text="${p.name}"></option>
                                 </select>
@@ -84,7 +84,7 @@
                         <th scope="col">
                             <button type="button" class="btn btn-primary" data-bs-toggle="modal"
                                     data-bs-target="#deleteModal"
-                                    th:attr="onclick=|stringArr()|"> DELETE ALL
+                                    th:attr="onclick=|stringArr()|"> Delete
                             </button>
                         </th>
 
@@ -170,7 +170,7 @@
             </li>
             <li class="page-item" th:if="${customerPage.number > 0}">
                 <a class="page-link"
-                   th:href="@{/customer/list(page=${customerPage.number - 1})}">Previous</a>
+                   th:href="@{/customer/list(page=${customerPage.number - 1},name=${name},dataOfBirth=${dataOfBirth},CustomerTypeID=${CustomerTypeID})}">Previous</a>
             </li>
             <li class="page-item disabled">
                 <a class="page-link" href=""><span th:text="${customerPage.number + 1}"></span> / <span
@@ -181,7 +181,7 @@
             </li>
             <li class="page-item" th:if="${customerPage.number < customerPage.totalPages - 1}">
                 <a class="page-link"
-                   th:href="@{/customer/list(page=${customerPage.number + 1})}">Next</a>
+                   th:href="@{/customer/list(page=${customerPage.number + 1},name=${name},dataOfBirth=${dataOfBirth},CustomerTypeID=${CustomerTypeID})}">Next</a>
             </li>
         </ul>
     </div>
