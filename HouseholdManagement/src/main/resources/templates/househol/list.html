@@ -45,7 +45,7 @@
     <tr class="table-table-hover" th:each="iteam, loop : ${householViewPage}" style="background-color: #E2F0EB4D">
 
       <th scope="row" th:text="${loop.count}"></th>
-      <td th:text="${iteam.idHousehol}"></td>
+      <td th:text="'HK-00'+${iteam.idHousehol}"></td>
       <td th:text="${iteam.nameMember}"></td>
       <td th:text="${iteam.numberMember}"></td>
       <td th:text="${iteam.startDay}"></td>
