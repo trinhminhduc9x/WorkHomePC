@@ -16,7 +16,23 @@ public interface HouseholRepository extends JpaRepository<Househol,Integer> {
 //    Page<HouseholView> showPageT(Pageable pageable);
 
 
-    @Query(value = "SELECT * FROM househol.househol JOIN househol.member on househol.member_id = member.id_member",nativeQuery = true)
+    @Query(value = "SELECT \n" +
+            "househol.id_househol as idHousehol,\n" +
+            "househol.number_member as numberMember,\n" +
+            "househol.start_day as startDay,\n" +
+            "househol.address as address\n" +
+            "FROM househol \n",nativeQuery = true)
     Page<HouseholView> showPage(Pageable pageable);
 
+
+    @Query(value = "SELECT \n" +
+            "househol.id_househol as idHousehol,\n" +
+            "member.name as nameMember,\n" +
+            "househol.number_member as numberMember,\n" +
+            "househol.start_day as startDay,\n" +
+            "househol.address as address\n" +
+            "FROM househol \n" +
+            "JOIN\n" +
+            "member  ON househol.member_id = member.id_member",nativeQuery = true)
+    Page<HouseholView> showPageT2(Pageable pageable);
 }

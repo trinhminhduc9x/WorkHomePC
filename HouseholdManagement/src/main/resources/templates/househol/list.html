@@ -45,10 +45,10 @@
     <tr class="table-table-hover" th:each="iteam, loop : ${householViewPage}" style="background-color: #E2F0EB4D">
 
       <th scope="row" th:text="${loop.count}"></th>
-      <td th:text="${iteam.id}"></td>
-      <td th:text="${iteam.name}"></td>
-      <td th:text="${iteam.number_member}"></td>
-      <td th:text="${iteam.start_day}"></td>
+      <td th:text="${iteam.idHousehol}"></td>
+      <td th:text="${iteam.nameMember}"></td>
+      <td th:text="${iteam.numberMember}"></td>
+      <td th:text="${iteam.startDay}"></td>
       <td th:text="${iteam.address}"></td>
 
 
@@ -56,7 +56,7 @@
       <td>
         <button type="button" class="btn btn-outline-success" data-bs-toggle="modal"
                 data-bs-target="#hdctButton"
-                th:attr="onclick=|contractDetail('${iteam.id}')|">
+                th:attr="onclick=|contractDetail('${iteam.idHousehol}')|">
           thêm mới hợp đồng chi tiết
         </button>
       </td>
@@ -64,7 +64,7 @@
       <td>
         <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal"
                 data-bs-target="#view"
-                th:attr="onclick=|infoToModal('${iteam.id}')|">
+                th:attr="onclick=|infoToModal('${iteam.idHousehol}')|">
           xem dịch vụ đi kèm
         </button>
       </td>

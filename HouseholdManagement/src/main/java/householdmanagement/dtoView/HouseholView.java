@@ -1,13 +1,13 @@
 package householdmanagement.dtoView;
 
 public interface HouseholView {
-    Integer getId_househol();
+    Integer getIdHousehol();
 
-    String getName();
+    String getNameMember();
 
-    String getNumber_member();
+    String getNumberMember();
 
-    String getStart_day();
+    String getStartDay();
 
     String getAddress();
 }
