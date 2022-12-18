@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout :: head">
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+<div th:replace="layout :: header"></div>
+
+<div class="container d-flex justify-content-md-center mb-5"
+     style="text-align: center; font-size: 14px; background-image: linear-gradient(to top right, #EB9FC0, #B83F8F, #2C2867);height: 300vh; overflow:hidden ">
+  <div class="row">
+    <div class="col bg-light info">
+      <form action="/premiere/save" method="post" th:object="${premiereDto}">
+        <fieldset>
+          <legend style="text-align: center"></legend>
+          <table>
+            <tr>
+              <td>
+               tên phim
+              </td>
+              <td>
+                <select th:field="*{movie}">
+                  <option th:each="iteam : ${movieList}"
+                          th:value="${iteam.idMovie}"
+                          th:text="${iteam.nameMovie}"></option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td>số vé công chiếu
+              </td>
+              <td>
+                <input type="number"
+                       class="form-control"
+                       th:field="*{numberPremiere}">
+                <div class="text-danger" th:errors="*{numberPremiere}"></div>
+              </td>
+            </tr>
+            <tr>
+              <td>ngày công chiếu
+              </td>
+              <td>
+                <input type="date"
+                       class="form-control"
+                       th:field="*{dayPremiere}">
+                <div class="text-danger" th:errors="*{dayPremiere}"></div>
+              </td>
+            </tr>
+            <tr>
+              <td><input type="reset" value="Clear"></td>
+              <td><input type="submit" value="submit" class=" btn-success"></td>
+            </tr>
+          </table>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div th:replace="layout :: footer"></div>
+
+
+<script>
+  $(function () {
+    $("#name").title();
+  });
+</script>
+
+</body>
+</html>
