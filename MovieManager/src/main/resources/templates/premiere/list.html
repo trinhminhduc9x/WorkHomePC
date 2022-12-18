@@ -77,6 +77,8 @@
             <th scope="col">Tên phim</th>
             <th scope="col">Ngày chiếu</th>
             <th scope="col">Số lượng vé</th>
+            <th scope="col">Số ttt* số lượng vé</th>
+
             <th scope="col">xóa</th>
             <th scope="col">edit</th>
         </tr>
@@ -90,6 +92,7 @@
             <td th:text="${iteam.movie.nameMovie}"></td>
             <td th:text="${iteam.dayPremiere}"></td>
             <td th:text="${iteam.numberPremiere}"></td>
+            <td th:text="${iteam.numberPremiere}*${iteam.idPremiere}"></td>
 
 
             <!-- nút xóa -->
@@ -137,7 +140,7 @@
         </li>
         <li class="page-item" th:if="${premierePage.number < premierePage.totalPages - 1}">
             <a class="page-link"
-               th:href="@{/premiere/list(page=${premierePage.number + 1})}">Next</a>
+               th:href="@{/premiere/list(page=${premierePage.number + 1},numberPremiere=${numberPremiere},dayPremiere=${dayPremiere},movieId=${movieId})}">Next</a>
         </li>
     </ul>
 </div>
