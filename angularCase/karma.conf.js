@@ -25,7 +25,7 @@ module.exports = function (config) {
       suppressAll: true // removes the duplicated traces
     },
     coverageReporter: {
-      dir: require('path').join(__dirname, './coverage/angular-change-font-size'),
+      dir: require('path').join(__dirname, './coverage/angularCase'),
       subdir: '.',
       reporters: [
         { type: 'html' },

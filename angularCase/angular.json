@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "angular-change-font-size": {
+    "angularCase": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:application": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/angular-change-font-size",
+            "outputPath": "dist/angularCase",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -65,18 +65,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "angular-change-font-size:build"
+            "browserTarget": "angularCase:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "angular-change-font-size:build:production"
+              "browserTarget": "angularCase:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "angular-change-font-size:build"
+            "browserTarget": "angularCase:build"
           }
         },
         "test": {
@@ -113,16 +113,19 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "angular-change-font-size:serve"
+            "devServerTarget": "angularCase:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "angular-change-font-size:serve:production"
+              "devServerTarget": "angularCase:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "angular-change-font-size"
+  "defaultProject": "angularCase",
+  "cli": {
+    "analytics": "3b29c426-9470-40dc-b9ab-c7c1940ce95b"
+  }
 }
