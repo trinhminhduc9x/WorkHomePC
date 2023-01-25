@@ -1,0 +1,168 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Giang",
+      "phone": "012"
+    },
+    {
+      "id": 2,
+      "name": "Hùng",
+      "phone": "032"
+    },
+    {
+      "id": 3,
+      "name": "Sơn",
+      "phone": "052"
+    }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "name": "Điện tử"
+    },
+    {
+      "id": 2,
+      "name": "Gia dụng"
+    },
+    {
+      "id": 3,
+      "name": "Nội thất"
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "name": "Đèn bàn",
+      "initialPrice": "1000",
+      "priceStep": "1000",
+      "startDate": "22/2/2222",
+      "endDate": "23/2/2222",
+      "description": "Mới 99%",
+      "imgUrl": "#",
+      "category": {
+        "id": 2,
+        "name": "Gia dụng"
+      },
+      "user": {
+        "id": 3,
+        "name": "Sơn",
+        "phone": "052"
+      }
+    },
+    {
+      "id": 2,
+      "name": "IPhone 10",
+      "initialPrice": "10500",
+      "priceStep": "1500",
+      "startDate": "22/1/2222",
+      "endDate": "23/1/2222",
+      "description": "Mới 96%",
+      "imgUrl": "#",
+      "category": {
+        "id": 1,
+        "name": "Điện tử"
+      },
+      "user": {
+        "id": 1,
+        "name": "Giang",
+        "phone": "012"
+      }
+    },
+    {
+      "id": 3,
+      "name": "Tủ đứng",
+      "initialPrice": "1500",
+      "priceStep": "1000",
+      "startDate": "22/6/2222",
+      "endDate": "23/7/2222",
+      "description": "Gỗ ép",
+      "imgUrl": "#",
+      "category": {
+        "id": 3,
+        "name": "Nội thất"
+      },
+      "user": {
+        "id": 2,
+        "name": "Hùng",
+        "phone": "032"
+      }
+    },
+    {
+      "id": 4,
+      "name": "Đèn bàn",
+      "initialPrice": "1000",
+      "priceStep": "1000",
+      "startDate": "22/2/2222",
+      "endDate": "23/2/2222",
+      "description": "Mới 99%",
+      "imgUrl": "#",
+      "category": {
+        "id": 2,
+        "name": "Gia dụng"
+      },
+      "user": {
+        "id": 3,
+        "name": "Sơn",
+        "phone": "052"
+      }
+    },
+    {
+      "id": 5,
+      "name": "Đèn bàn",
+      "initialPrice": "1000",
+      "priceStep": "1000",
+      "startDate": "22/2/2222",
+      "endDate": "23/2/2222",
+      "description": "Mới 99%",
+      "imgUrl": "#",
+      "category": {
+        "id": 2,
+        "name": "Gia dụng"
+      },
+      "user": {
+        "id": 3,
+        "name": "Sơn",
+        "phone": "052"
+      }
+    },
+    {
+      "id": 6,
+      "name": "Đèn bàn",
+      "initialPrice": "1000",
+      "priceStep": "1000",
+      "startDate": "22/2/2222",
+      "endDate": "23/2/2222",
+      "description": "Mới 99%",
+      "imgUrl": "#",
+      "category": {
+        "id": 2,
+        "name": "Gia dụng"
+      },
+      "user": {
+        "id": 3,
+        "name": "Sơn",
+        "phone": "052"
+      }
+    },
+    {
+      "id": 7,
+      "name": "Đèn bàn",
+      "initialPrice": "1000",
+      "priceStep": "1000",
+      "startDate": "22/2/2222",
+      "endDate": "23/2/2222",
+      "description": "Mới 99%",
+      "imgUrl": "#",
+      "category": {
+        "id": 2,
+        "name": "Gia dụng"
+      },
+      "user": {
+        "id": 3,
+        "name": "Sơn",
+        "phone": "052"
+      }
+    }
+  ]
+}

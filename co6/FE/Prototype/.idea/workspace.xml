@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="3f88aea5-cdbd-48cf-bf4b-f37745de5633" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../[C0622G1]_Prototype_GiangLBH.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../[C0622G1]_Prototype_GiangLBH/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../[C0622G1]_Prototype_GiangLBH/.idea/Prototype.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../[C0622G1]_Prototype_GiangLBH/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../[C0622G1]_Prototype_GiangLBH/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../[C0622G1]_Prototype_GiangLBH/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../[C0622G1]_Prototype_GiangLBH/product.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../[C0622G1]_Prototype_GiangLBH/productList.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../[C0622G1]_Prototype_GiangLBH/productReview.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../[C0622G1]_Prototype_GiangLBH/productReview.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Tien/prototype.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Tien/prototype.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../~$rint_1_Quan ly website dau gia_SRS_v5.0 SE06.doc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../module5_exam/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../module5_exam/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../module5_exam/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../module5_exam/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../module5_exam/gradlew" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../module5_exam/gradlew.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../module5_exam/settings.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../module5_exam/src/main/java/com/example/demo/DemoApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../module5_exam/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../module5_exam/src/test/java/com/example/demo/DemoApplicationTests.java" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="CSS File" />
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectId" id="2IZ5YbiBJAAObZNmhubmtDzi1my" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Tien/prototype.html" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="3f88aea5-cdbd-48cf-bf4b-f37745de5633" name="Default Changelist" comment="" />
+      <created>1670376313299</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1670376313299</updated>
+      <workItem from="1670376314646" duration="18530000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="463" y="118" key="FileChooserDialogImpl" timestamp="1670401220291">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="463" y="118" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1670401220291" />
+    <state x="339" y="162" key="run.anything.popup" timestamp="1670397704693">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="339" y="162" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1670397704693" />
+  </component>
+</project>

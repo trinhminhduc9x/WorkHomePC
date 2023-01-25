@@ -1,0 +1,47 @@
+body {
+  background: url("src/assets/image/bg_img.jpg") no-repeat center/cover;
+  height: 100vh;
+  width: 100vw;
+}
+
+#wrapper {
+  right: 0;
+  margin: 0 auto;
+  display: block;
+  width: 960px;
+}
+
+#border-pagination {
+  margin: 0 auto;
+  padding: 0;
+  text-align: center
+}
+
+#border-pagination li {
+  display: inline;
+}
+
+#border-pagination li a {
+  display: block;
+  text-decoration: none;
+  color: red;
+  padding: 5px 10px;
+  border: 1px solid #ddd;
+  background-color: white;
+  float: left;
+
+}
+
+#border-pagination li a {
+  -webkit-transition: background-color 0.4s;
+  transition: background-color 0.4s
+}
+
+#border-pagination li a.active {
+  background-color: #4caf50;
+  color: #fff;
+}
+
+#border-pagination li a:hover:not(.active) {
+  background: #4caf50;
+}
