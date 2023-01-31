@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="ff7bb950-0e22-49b7-871e-1289701b85d2" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradlew" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradlew.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/projectbackend/ProjectBackendApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/projectbackend/controller/CustomerRestController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/projectbackend/dto/account/AccountDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/projectbackend/dto/account/RoleDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/projectbackend/dto/account/UpdatePasswordAccountDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/projectbackend/dto/customer/CustomerDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/projectbackend/dto/customer/ICustomerDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/projectbackend/dto/customer/ICustomerStatementDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/projectbackend/model/account/Account.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/projectbackend/model/account/Account_role.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/projectbackend/model/account/Role.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/projectbackend/model/customer/Customer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/projectbackend/repository/account/IRoleRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/projectbackend/repository/account/IUserRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/projectbackend/repository/customer/ICustomerRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/projectbackend/service/account/IRoleService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/projectbackend/service/account/IUserService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/projectbackend/service/account/impl/RoleService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/projectbackend/service/account/impl/UserService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/projectbackend/service/customer/ICustomerService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/projectbackend/service/customer/impl/CustomerService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/projectbackend/ProjectBackendApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/projectbackend/SecurityRestControllerTest/LoginRestControllerTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C0422G1-Project-Dating-BE/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C0422G1-Project-Dating-BE/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C0422G1-Project-Dating-BE/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C0422G1-Project-Dating-BE/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C0422G1-Project-Dating-BE/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C0422G1-Project-Dating-BE/gradlew" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C0422G1-Project-Dating-BE/gradlew.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C0422G1-Project-Dating-BE/settings.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C0422G1-Project-Dating-BE/src/main/java/com/codegym/dating/ProjectDatingApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C0422G1-Project-Dating-BE/src/main/java/com/codegym/dating/common/AuthenticationProvider.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C0422G1-Project-Dating-BE/src/main/java/com/codegym/dating/config/JwtAuthenticationEntryPoint.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C0422G1-Project-Dating-BE/src/main/java/com/codegym/dating/config/MailConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C0422G1-Project-Dating-BE/src/main/java/com/codegym/dating/config/WebSecurityConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C0422G1-Project-Dating-BE/src/main/java/com/codegym/dating/controller/AccountRestController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C0422G1-Project-Dating-BE/src/main/java/com/codegym/dating/dto/AccountDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C0422G1-Project-Dating-BE/src/main/java/com/codegym/dating/dto/CommentDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C0422G1-Project-Dating-BE/src/main/java/com/codegym/dating/dto/FriendListDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C0422G1-Project-Dating-BE/src/main/java/com/codegym/dating/dto/HobbitDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C0422G1-Project-Dating-BE/src/main/java/com/codegym/dating/dto/ICommentDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C0422G1-Project-Dating-BE/src/main/java/com/codegym/dating/dto/IPostDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C0422G1-Project-Dating-BE/src/main/java/com/codegym/dating/dto/IReportDetailsDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C0422G1-Project-Dating-BE/src/main/java/com/codegym/dating/dto/InvoiceDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C0422G1-Project-Dating-BE/src/main/java/com/codegym/dating/dto/ListUserDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C0422G1-Project-Dating-BE/src/main/java/com/codegym/dating/dto/PostDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C0422G1-Project-Dating-BE/src/main/java/com/codegym/dating/dto/RelationshipDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C0422G1-Project-Dating-BE/src/main/java/com/codegym/dating/dto/ReportDetailDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C0422G1-Project-Dating-BE/src/main/java/com/codegym/dating/dto/ReportDetailsDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C0422G1-Project-Dating-BE/src/main/java/com/codegym/dating/dto/ReportDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C0422G1-Project-Dating-BE/src/main/java/com/codegym/dating/dto/UserClassDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C0422G1-Project-Dating-BE/src/main/java/com/codegym/dating/dto/UserDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C0422G1-Project-Dating-BE/src/main/java/com/codegym/dating/dto/UserReportDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C0422G1-Project-Dating-BE/src/main/java/com/codegym/dating/dto/UserSummaryDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C0422G1-Project-Dating-BE/src/main/java/com/codegym/dating/jwt/JwtFilter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C0422G1-Project-Dating-BE/src/main/java/com/codegym/dating/jwt/JwtTokenUtil.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C0422G1-Project-Dating-BE/src/main/java/com/codegym/dating/model/Account.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C0422G1-Project-Dating-BE/src/main/java/com/codegym/dating/model/AccountRole.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C0422G1-Project-Dating-BE/src/main/java/com/codegym/dating/model/Role.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C0422G1-Project-Dating-BE/src/main/java/com/codegym/dating/model/User.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C0422G1-Project-Dating-BE/src/main/java/com/codegym/dating/model/composite/AccountRoleKey.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C0422G1-Project-Dating-BE/src/main/java/com/codegym/dating/model/composite/GiftUserKey.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C0422G1-Project-Dating-BE/src/main/java/com/codegym/dating/model/composite/UserHobbitKey.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C0422G1-Project-Dating-BE/src/main/java/com/codegym/dating/model/composite/UserTargetKey.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C0422G1-Project-Dating-BE/src/main/java/com/codegym/dating/oauth2/OAuth2Account.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C0422G1-Project-Dating-BE/src/main/java/com/codegym/dating/oauth2/OAuth2AccountService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C0422G1-Project-Dating-BE/src/main/java/com/codegym/dating/oauth2/OAuth2LoginSuccessHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C0422G1-Project-Dating-BE/src/main/java/com/codegym/dating/payload/LoginRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C0422G1-Project-Dating-BE/src/main/java/com/codegym/dating/payload/LoginResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C0422G1-Project-Dating-BE/src/main/java/com/codegym/dating/payload/request/UpdateStatusRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C0422G1-Project-Dating-BE/src/main/java/com/codegym/dating/projection_dto/IUserDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C0422G1-Project-Dating-BE/src/main/java/com/codegym/dating/repository/IAccountRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C0422G1-Project-Dating-BE/src/main/java/com/codegym/dating/repository/IAccountRoleRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C0422G1-Project-Dating-BE/src/main/java/com/codegym/dating/repository/ICommentRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C0422G1-Project-Dating-BE/src/main/java/com/codegym/dating/repository/IFriendListRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C0422G1-Project-Dating-BE/src/main/java/com/codegym/dating/repository/IGiftRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C0422G1-Project-Dating-BE/src/main/java/com/codegym/dating/repository/IGiftUserRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C0422G1-Project-Dating-BE/src/main/java/com/codegym/dating/repository/IHobbitRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C0422G1-Project-Dating-BE/src/main/java/com/codegym/dating/repository/IInvoiceRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C0422G1-Project-Dating-BE/src/main/java/com/codegym/dating/repository/IPostRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C0422G1-Project-Dating-BE/src/main/java/com/codegym/dating/repository/IReportDetailsRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C0422G1-Project-Dating-BE/src/main/java/com/codegym/dating/repository/IReportRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C0422G1-Project-Dating-BE/src/main/java/com/codegym/dating/repository/IRoleRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C0422G1-Project-Dating-BE/src/main/java/com/codegym/dating/repository/IStatusActiveRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C0422G1-Project-Dating-BE/src/main/java/com/codegym/dating/repository/ITargetRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C0422G1-Project-Dating-BE/src/main/java/com/codegym/dating/repository/ITypeUserRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C0422G1-Project-Dating-BE/src/main/java/com/codegym/dating/repository/IUserHobbitRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C0422G1-Project-Dating-BE/src/main/java/com/codegym/dating/repository/IUserRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C0422G1-Project-Dating-BE/src/main/java/com/codegym/dating/repository/IUserTargetRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C0422G1-Project-Dating-BE/src/main/java/com/codegym/dating/service/IAccountRoleService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C0422G1-Project-Dating-BE/src/main/java/com/codegym/dating/service/IAccountService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C0422G1-Project-Dating-BE/src/main/java/com/codegym/dating/service/ICommentService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C0422G1-Project-Dating-BE/src/main/java/com/codegym/dating/service/IFriendListService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C0422G1-Project-Dating-BE/src/main/java/com/codegym/dating/service/IGiftService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C0422G1-Project-Dating-BE/src/main/java/com/codegym/dating/service/IGiftUserService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C0422G1-Project-Dating-BE/src/main/java/com/codegym/dating/service/IHobbitService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C0422G1-Project-Dating-BE/src/main/java/com/codegym/dating/service/IInvoiceService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C0422G1-Project-Dating-BE/src/main/java/com/codegym/dating/service/IPostService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C0422G1-Project-Dating-BE/src/main/java/com/codegym/dating/service/IReportDetailsService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C0422G1-Project-Dating-BE/src/main/java/com/codegym/dating/service/IReportService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C0422G1-Project-Dating-BE/src/main/java/com/codegym/dating/service/IRoleService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C0422G1-Project-Dating-BE/src/main/java/com/codegym/dating/service/IStatusActiveService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C0422G1-Project-Dating-BE/src/main/java/com/codegym/dating/service/ITargetService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C0422G1-Project-Dating-BE/src/main/java/com/codegym/dating/service/ITypeUserService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C0422G1-Project-Dating-BE/src/main/java/com/codegym/dating/service/IUserHobbitService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C0422G1-Project-Dating-BE/src/main/java/com/codegym/dating/service/IUserService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C0422G1-Project-Dating-BE/src/main/java/com/codegym/dating/service/IUserTargetService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C0422G1-Project-Dating-BE/src/main/java/com/codegym/dating/service/impl/AccountDetails.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C0422G1-Project-Dating-BE/src/main/java/com/codegym/dating/service/impl/AccountDetailsService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C0422G1-Project-Dating-BE/src/main/java/com/codegym/dating/service/impl/AccountRoleService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C0422G1-Project-Dating-BE/src/main/java/com/codegym/dating/service/impl/AccountService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C0422G1-Project-Dating-BE/src/main/java/com/codegym/dating/service/impl/CommentService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C0422G1-Project-Dating-BE/src/main/java/com/codegym/dating/service/impl/FriendListService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C0422G1-Project-Dating-BE/src/main/java/com/codegym/dating/service/impl/GiftService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C0422G1-Project-Dating-BE/src/main/java/com/codegym/dating/service/impl/GiftUserService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C0422G1-Project-Dating-BE/src/main/java/com/codegym/dating/service/impl/HobbitService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C0422G1-Project-Dating-BE/src/main/java/com/codegym/dating/service/impl/InvoiceService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C0422G1-Project-Dating-BE/src/main/java/com/codegym/dating/service/impl/PostService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C0422G1-Project-Dating-BE/src/main/java/com/codegym/dating/service/impl/ReportDetailService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C0422G1-Project-Dating-BE/src/main/java/com/codegym/dating/service/impl/ReportService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C0422G1-Project-Dating-BE/src/main/java/com/codegym/dating/service/impl/RoleService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C0422G1-Project-Dating-BE/src/main/java/com/codegym/dating/service/impl/StatusActiveService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C0422G1-Project-Dating-BE/src/main/java/com/codegym/dating/service/impl/TargetService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C0422G1-Project-Dating-BE/src/main/java/com/codegym/dating/service/impl/TypeUserService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C0422G1-Project-Dating-BE/src/main/java/com/codegym/dating/service/impl/UserHobbitService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C0422G1-Project-Dating-BE/src/main/java/com/codegym/dating/service/impl/UserService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C0422G1-Project-Dating-BE/src/main/java/com/codegym/dating/service/impl/UserTargetService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C0422G1-Project-Dating-BE/src/main/java/com/codegym/dating/ulti/EncrytedPasswordUtils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C0422G1-Project-Dating-BE/src/main/java/com/codegym/dating/ulti/UserValidate.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C0422G1-Project-Dating-BE/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C0422G1-Project-Dating-BE/src/test/java/com/codegym/dating/ProjectDatingApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C0422G1-Project-Dating-BE/src/test/java/com/codegym/dating/controller/FriendListRestController_AddRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C0422G1-Project-Dating-BE/src/test/java/com/codegym/dating/controller/FriendListRestController_CheckFriend.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C0422G1-Project-Dating-BE/src/test/java/com/codegym/dating/controller/HobbitRestController_FindByIdUser.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C0422G1-Project-Dating-BE/src/test/java/com/codegym/dating/controller/ListFriendRestController_getListFriend.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C0422G1-Project-Dating-BE/src/test/java/com/codegym/dating/controller/SecurityRestController_authenticateUser.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C0422G1-Project-Dating-BE/src/test/java/com/codegym/dating/controller/UserRestController_GetInfoUser.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C0422G1-Project-Dating-BE/src/test/java/com/codegym/dating/controller/UserRestController_goPage.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C0422G1-Project-Dating-BE/src/test/java/com/codegym/dating/controller/UserRestController_search.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../C0422G1-Project-Dating-BE/test.txt" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2L2lJyMBDwvtngtoXmeUfGiBwlJ" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "E:/HOMEPC/01-02-2023/C0722G1-Repo-BE/C0722G1-Repo-BE",
+    "spring.configuration.checksum": "70bcace633a927bd83e1460d0280df27"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
+    ]
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration name="ProjectBackendApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="project-backend.main" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="projectbackend.ProjectBackendApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ff7bb950-0e22-49b7-871e-1289701b85d2" name="Changes" comment="" />
+      <created>1675076991281</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1675076991281</updated>
+      <workItem from="1675076992476" duration="1329000" />
+      <workItem from="1675090098979" duration="1303000" />
+      <workItem from="1675091498871" duration="2999000" />
+      <workItem from="1675120052527" duration="560000" />
+      <workItem from="1675184567903" duration="991000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
