@@ -1,0 +1,66 @@
+<div class="container mt-5" id="container">
+  <div class="form-container sign-up-container">
+    <form [formGroup]="customerForm" (ngSubmit)="submit()">
+      <h1>Đăng ký</h1>
+      <!--            Tên đăng nhập(*)-->
+
+        <input formControlName="usernameAccount" type="text" placeholder="Tên đăng nhập(*)"/>
+
+      <div formGroupName="passGroup">
+        <!--password-->
+        <input formControlName="encryptPassword" type="password" placeholder="Mật khẩu(*)"/>
+
+        <!--password confirm-->
+        <input formControlName="passwordConfirm" type="password" placeholder="Nhập lại khẩu(*)"/>
+      </div>
+
+      <!--Họ và tên(*)-->
+      <input formControlName="nameCustomer" type="text" placeholder="Họ và tên(*)"/>
+
+      <!--Ngay sinh(*)-->
+      <input formControlName="dateOfBirth" type="date" placeholder="Ngay sinh(*)"/>
+
+      <!--CCCD-->
+      <input formControlName="idCardCustomer" type="number" placeholder="CCCD(*)"/>
+
+      <!--Di Động 1(*)-->
+      <input formControlName="phoneCustomer1" type="number" placeholder="Di Động 1(*)"/>
+
+      <!--Di Động 2-->
+      <input formControlName="phoneCustomer2" type="number" placeholder="Di Động 2"/>
+
+      <!--email-->
+      <input formControlName="emailCustomer" type="email" placeholder="Email(*)"/>
+
+      <!--Địa chỉ(*)-->
+      <input formControlName="addressCustomer" type="text" placeholder="Địa chỉ(*)"/>
+
+      <!--gioi tinh(*)-->
+      <div id="inlineRadio1">
+        <p>Chọn giới tính</p>
+        <label><input type="radio"  value="1"  formControlName="genderCustomer">Nam</label>
+        <label><input type="radio"  value="2"  formControlName="genderCustomer">Nữ</label>
+        <label><input type="radio"  value="3"  formControlName="genderCustomer">Giới tính khác</label>
+      </div>
+
+      <div class="form-check d-flex justify-content-center">
+        <input class="me-3" style="height: 18px; width: 18px"  type="checkbox" value="" >
+        <label class="form-check-label" >
+          Đồng ý <a href="">điều khoản</a> của website
+        </label>
+      </div>
+      <button type="submit">Đăng ký</button>
+    </form>
+  </div>
+  <div class="overlay-container">
+    <div class="overlay">
+      <div class="overlay-panel overlay-left overlay-right">
+        <h3>Batdongsan.com.vn</h3>
+      <img src="../../../assets/logoSang.png" height="213" width="399"/>
+        <p>Đăng nhập bằng tài khoản của bạn</p>
+        <button class="ghost" routerLink="/account/login" id="signIn">Đăng nhập</button>
+      </div>
+    </div>
+  </div>
+</div>
+
