@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 
@@ -50,39 +51,46 @@ public class CustomerRestController {
      * method of using save customer
      */
 
-//
-//    @PostMapping(value = "/signup")
-//    public ResponseEntity<?> register(@Valid @RequestBody CustomerDto customerDto,
-//                                      BindingResult bindingResult)  {
-//        if (bindingResult.hasErrors()) {
-//            return new ResponseEntity<>(bindingResult.getFieldErrors(),
-//                    HttpStatus.BAD_REQUEST);
-//        }
-//
-//        Customer customer = new Customer();
-//
-//        BeanUtils.copyProperties(customerDto, customer);
-//
-//        if (userService.existsByUsername(customer.getAccount().getUsernameAccount())) {
-//            return new ResponseEntity<>(new ResponseMessage("The username is existed"), HttpStatus.OK);
-//        }
-//        if (userService.existsByEmail(customer.getEmailCustomer())) {
-//            return new ResponseEntity<>(new ResponseMessage("The email is existed"), HttpStatus.OK);
-//        }
-//        Account account = new Account();
-//        account.setName(customer.getNameCustomer());
-//        account.setUsernameAccount(customer.getAccount().getUsernameAccount());
-//        account.setEncryptPassword(passwordEncoder.encode(customer.getAccount().getEncryptPassword()));
-//        account.setEmail(customer.getEmailCustomer());
-//        Set<Role> roles = new HashSet<>();
-//        Role customerRole = roleService.findByName(RoleName.CUSTOMER).orElseThrow(() -> new RuntimeException("Role not found"));
-//        roles.add(customerRole);
-//        account.setRoles(roles);
-//        userService.save(account);
-//        customer.setAccount(account);
-//        iCustomerService.saveCustomer(customer);
-//        return new ResponseEntity<>(new ResponseMessage("Create success!"), HttpStatus.OK);
-//    }
+
+    @PostMapping(value = "/signup")
+    public ResponseEntity<?> register(@Valid @RequestBody CustomerDto customerDto,
+                                      BindingResult bindingResult)  {
+        if (bindingResult.hasErrors()) {
+            return new ResponseEntity<>(bindingResult.getFieldErrors(),
+                    HttpStatus.BAD_REQUEST);
+        }
+        Customer customer = new Customer();
+        BeanUtils.copyProperties(customerDto, customer);
+        if (userService.existsByUsername(customer.getAccount().getUsernameAccount())) {
+            return new ResponseEntity<>(new ResponseMessage("The username is existed"), HttpStatus.OK);
+        }
+        if (userService.existsByEmail(customer.getEmailCustomer())) {
+            return new ResponseEntity<>(new ResponseMessage("The email is existed"), HttpStatus.OK);
+        }
+        Account account = new Account();
+        account.setName(customer.getNameCustomer());
+        account.setUsernameAccount(customer.getAccount().getUsernameAccount());
+        account.setEncryptPassword(passwordEncoder.encode(customer.getAccount().getEncryptPassword()));
+        account.setEmail(customer.getEmailCustomer());
+        Set<Role> roles = new HashSet<>();
+        Role customerRole = roleService.findByName(RoleName.CUSTOMER).orElseThrow(() -> new RuntimeException("Role not found"));
+        roles.add(customerRole);
+        account.setRoles(roles);
+        userService.save(account);
+        customer.setAccount(account);
+        iCustomerService.saveCustomer(customer);
+        return new ResponseEntity<>(new ResponseMessage("Create success!"), HttpStatus.OK);
+    }
+
+    @GetMapping("/listAllCustomer")
+    public ResponseEntity<List<Customer>> showList() {
+        List<Customer> customerList = iCustomerService.findListAll();
+        if (customerList.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(customerList, HttpStatus.OK);
+    }
+
 //    @PostMapping(value = "/signup")
 //    public ResponseEntity<?> register(@Valid @RequestBody ICustomerDto customerDto,
 //                                      BindingResult bindingResult) {
@@ -117,29 +125,29 @@ public class CustomerRestController {
 //        return new ResponseEntity<>(new ResponseMessage("Create success!"), HttpStatus.OK);
 //    }
 
-    @PostMapping(value = "/signup")
-    public ResponseEntity<?> register(@Valid @RequestBody Customer customer,
-                                      BindingResult bindingResult) {
-        if (bindingResult.hasErrors()) {
-            return new ResponseEntity<>(bindingResult.getFieldErrors(),
-                    HttpStatus.BAD_REQUEST);
-        }
-
-        Account account = new Account();
-        account.setName(customer.getNameCustomer());
-        account.setUsernameAccount(customer.getAccount().getUsernameAccount());
-        account.setEncryptPassword(passwordEncoder.encode(customer.getAccount().getEncryptPassword()));
-        account.setEmail(customer.getEmailCustomer());
-        Set<Role> roles = new HashSet<>();
-        Role customerRole = roleService.findByName(RoleName.CUSTOMER).orElseThrow(() -> new RuntimeException("Role not found"));
-        roles.add(customerRole);
-        account.setRoles(roles);
-        userService.save(account);
-
-
-        customer.setAccount(account);
-        iCustomerService.saveCustomer(customer);
-        return new ResponseEntity<>(new ResponseMessage("Create success!"), HttpStatus.OK);
-    }
+//    @PostMapping(value = "/signup")
+//    public ResponseEntity<?> register(@Valid @RequestBody Customer customer,
+//                                      BindingResult bindingResult) {
+//        if (bindingResult.hasErrors()) {
+//            return new ResponseEntity<>(bindingResult.getFieldErrors(),
+//                    HttpStatus.BAD_REQUEST);
+//        }
+//
+//        Account account = new Account();
+//        account.setName(customer.getNameCustomer());
+//        account.setUsernameAccount(customer.getAccount().getUsernameAccount());
+//        account.setEncryptPassword(passwordEncoder.encode(customer.getAccount().getEncryptPassword()));
+//        account.setEmail(customer.getEmailCustomer());
+//        Set<Role> roles = new HashSet<>();
+//        Role customerRole = roleService.findByName(RoleName.CUSTOMER).orElseThrow(() -> new RuntimeException("Role not found"));
+//        roles.add(customerRole);
+//        account.setRoles(roles);
+//        userService.save(account);
+//
+//
+//        customer.setAccount(account);
+//        iCustomerService.saveCustomer(customer);
+//        return new ResponseEntity<>(new ResponseMessage("Create success!"), HttpStatus.OK);
+//    }
 
 }

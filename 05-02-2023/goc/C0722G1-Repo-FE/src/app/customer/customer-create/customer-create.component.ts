@@ -41,7 +41,6 @@ export class CustomerCreateComponent implements OnInit {
   customer: Customer | undefined;
   result = false;
   private customerList: Customer[] | undefined;
-  // @ts-ignore
   customerForm: FormGroup = new FormGroup(
     {
       idCustomer: new FormControl(''),
@@ -89,11 +88,14 @@ export class CustomerCreateComponent implements OnInit {
       return 'Sure?';
     };
   }
-  // ngOnInit(): void {
-  //   this.status = false;
-  //   this.getCreateForm();
-  // }
-  //
+  getAllCustomer(): void {
+    this.customerService.findAllCustomer().subscribe(list => {
+      this.customerList = list;
+    }, error => {
+      console.log(error);
+    });
+  }
+
   //
   // // tslint:disable-next-line:typedef
   // getCreateForm() {
@@ -129,7 +131,8 @@ export class CustomerCreateComponent implements OnInit {
   //             Validators.minLength(6)]),
   //           passwordConfirm: new FormControl('', [Validators.required,
   //             Validators.minLength(6)])
-  //         }, )
+  //         }, {validators: [ this.areEqual , this.isExist]},
+  //       )
   //       }, {validators: [this.areEqual, this.isExist]},
   //     );
   //   });
@@ -163,13 +166,6 @@ export class CustomerCreateComponent implements OnInit {
     const passwordCheck = group.value;
     return (passwordCheck.encryptPassword === passwordCheck.passwordConfirm ? null : {notSame: true});
   }
-  getAllCustomer(): void {
-    this.customerService.findAllCustomer().subscribe(list => {
-      this.customerList = list;
-    }, error => {
-      console.log(error);
-    });
-  }
 
   checkDateOfBirth(abstractControl: AbstractControl): any {
     const formYear = Number(new Date(abstractControl.value).getFullYear());
@@ -188,12 +184,13 @@ export class CustomerCreateComponent implements OnInit {
 
   areEqual: ValidatorFn = (control: AbstractControl): ValidationErrors | null => {
     // @ts-ignore
-    const name = control.get('usernameAccount').value;
+    const usernameAccount = control.get('usernameAccount').value;
+    console.log(usernameAccount);
     let result = null;
     // @ts-ignore
     this.customerList.forEach(value => {
       // @ts-ignore
-      if (name === value.account.name) {
+      if (usernameAccount === value.account.usernameAccount) {
         result = {areEqual: true};
         console.log(result);
       }
@@ -207,14 +204,11 @@ export class CustomerCreateComponent implements OnInit {
     let result = null;
     // @ts-ignore
     this.customerList.forEach(value => {
-      // @ts-ignore
-      if (email === value.account.email) {
+      if (email === value.emailCustomer) {
         result = {isExist: true};
       }
     });
     return result;
     console.log(result);
   }
-
-
 }

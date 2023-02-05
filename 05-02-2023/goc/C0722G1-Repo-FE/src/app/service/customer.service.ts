@@ -27,7 +27,7 @@ export class CustomerService {
   }
   findAllCustomer(): Observable<Customer[]> {
     // @ts-ignore
-    return this.httpClient.get<Customer[]>(this.urlFindAllCustomer);
+    return this.httpClient.get<Customer[]>(this.urlFindAllCustomer());
   }
 
 }
