@@ -140,4 +140,6 @@ public class NotificationRestController {
         notificationService.updateNotificationTo(notification, id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
+
 }
