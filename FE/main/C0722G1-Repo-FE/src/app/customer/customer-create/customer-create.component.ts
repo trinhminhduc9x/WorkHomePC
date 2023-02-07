@@ -164,7 +164,7 @@ export class CustomerCreateComponent implements OnInit {
     // @ts-ignore
     this.listMailCustomerAndUsernameAccount.forEach(value => {
       // @ts-ignore
-      if (email === value.emailCustomer) {
+      if (email === value.email) {
         result = {isExist: true};
       }
     });

@@ -121,12 +121,12 @@
       <input formControlName="addressCustomer" type="text" placeholder="Địa chỉ(*)"/>
 
       <!--gioi tinh(*)-->
-      <div id="inlineRadio1">
+      <div id="inlineRadio1" >
          <span class="text-danger ms-3 val"
                *ngIf="customerForm.controls.genderCustomer.hasError('required') && (customerForm.controls.genderCustomer.touched||submitted) ">
          Vui lòng nhập giới tính!!!
     </span>
-        <p>Chọn giới tính</p>
+        <label>Chọn giới tính :</label>
         <label><input type="radio"  value="1"  formControlName="genderCustomer">Nam</label>
         <label><input type="radio"  value="2"  formControlName="genderCustomer">Nữ</label>
         <label><input type="radio"  value="3"  formControlName="genderCustomer">Khác</label>
