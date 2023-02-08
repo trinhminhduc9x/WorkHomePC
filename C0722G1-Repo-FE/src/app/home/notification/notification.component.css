@@ -1,0 +1,21 @@
+button {
+  border-radius: 90px;
+  border: 1px solid #041858;
+  background-color: #202daa;
+  color: #ad0606;
+  letter-spacing: 1px;
+}
+#table {
+  padding: 0 50px;
+  height: 100%;
+  text-align: left;
+  font-size: 16px;
+  font-weight: 100;
+  line-height: 20px;
+  margin: 6px 0 6px;
+  font-family: arial , sans-serif;
+}
+#h5 {
+  text-align: center;
+}
+
